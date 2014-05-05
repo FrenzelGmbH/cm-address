@@ -109,7 +109,7 @@ class Address extends \yii\db\ActiveRecord
             //get the geo location information
         }
         //geolocating
-        $location = $this->addresslineOne . ' ,'.$this->cityName.' ,'. $this->country->name;
+        $location = $this->addresslineOne . ' ,' . $this->cityName;
         $response = GeoLocation::getGeocodeFromGoogle($location);
         $this->latitude = $response->results[0]->geometry->location->lat;
         $this->longitude = $response->results[0]->geometry->location->lng;
