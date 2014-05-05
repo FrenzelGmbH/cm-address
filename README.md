@@ -9,11 +9,11 @@ Installation
 Add the following line to your composer.json require section:
 
 ```
-"frenzelgmbh/cm-address":"*"
+"frenzelgmbh/cmaddress":"*"
 ```
 
 ```
-php yii migrate --migrationPath=@vendor/frenzelgmbh/cm-address/migrations
+php yii migrate --migrationPath=@vendor/frenzelgmbh/cmaddress/migrations
 ```
 
 Design

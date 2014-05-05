@@ -26,7 +26,7 @@ $content = $arr[0];
       <div class="fa fa-arrow-right"></div> <a href="<?=\Yii::$app->urlManager->createAbsoluteUrl(['/posts/post/onlineview', 'id' => $model->id, 'title'=>Html::encode(strtoupper($model->title))]); ?>" class="c_black"><?= Html::encode(strtoupper('read the full story here..')); ?></a>
     <?php endif; ?>
 
-    <?= frenzelgmbh\cm-address\widgets\WidgetBlogMapRender::widget(array(
+    <?= frenzelgmbh\cmaddress\widgets\WidgetBlogMapRender::widget(array(
     'module'=> app\modules\workflow\models\Workflow::MODULE_BLOG,
     'id'    => $model->id
   )); ?> 

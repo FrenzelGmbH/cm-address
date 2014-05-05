@@ -1,12 +1,12 @@
 <?php
-namespace frenzelgmbh\cm-address\widgets;
+namespace frenzelgmbh\cmaddress\widgets;
 
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
 use yii\data\ActiveDataProvider;
-use frenzelgmbh\cm-address\models\Post;
+use frenzelgmbh\cmaddress\models\Post;
 
 class PortletPostsAdmin extends \frenzelgmbh\appcommon\widgets\AdminPortlet
 {
@@ -32,7 +32,7 @@ class PortletPostsAdmin extends \frenzelgmbh\appcommon\widgets\AdminPortlet
 
 	public function init() {
 		parent::init();
-		\frenzelgmbh\cm-address\sblogAsset::register(\Yii::$app->view);
+		\frenzelgmbh\cmaddress\sblogAsset::register(\Yii::$app->view);
 	}
 
 	protected function renderContent()

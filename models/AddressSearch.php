@@ -1,11 +1,11 @@
 <?php
 
-namespace frenzelgmbh\cm-address\models;
+namespace frenzelgmbh\cmaddress\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frenzelgmbh\cm-address\models\Address;
+use frenzelgmbh\cmaddress\models\Address;
 
 /**
  * AddressSearch represents the model behind the search form about `app\models\Address`.

@@ -4,7 +4,7 @@
  * @author Philipp Frenzel <philipp@frenzel.net> 
  */
 
-namespace frenzelgmbh\cm-address;
+namespace frenzelgmbh\cmaddress;
 
 use yii\web\AssetBundle;
 

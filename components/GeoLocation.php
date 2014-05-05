@@ -1,5 +1,5 @@
 <?php
-namespace frenzelgmbh\cm-address\components;
+namespace frenzelgmbh\cmaddress\components;
 
 /**
  * <p>Represents a point on the surface of a sphere. (The Earth is almost

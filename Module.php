@@ -1,6 +1,6 @@
 <?php
 
-namespace frenzelgmbh\cm-address;
+namespace frenzelgmbh\cmaddress;
 
 use yii\base\Module as BaseModule;
 

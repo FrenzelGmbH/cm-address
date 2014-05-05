@@ -1,10 +1,10 @@
 <?php
-namespace frenzelgmbh\cm-address\widgets;
+namespace frenzelgmbh\cmaddress\widgets;
 
 use Yii;
 use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
-use frenzelgmbh\cm-address\models\WidgetConfig;
+use frenzelgmbh\cmaddress\models\WidgetConfig;
 use frenzelgmbh\appcommon\widgets\Portlet;
 
 class PortletPagination extends Portlet
@@ -17,7 +17,7 @@ class PortletPagination extends Portlet
 
 	public function init() {
 		parent::init();
-		\frenzelgmbh\cm-address\sblogAsset::register(\Yii::$app->view);
+		\frenzelgmbh\cmaddress\sblogAsset::register(\Yii::$app->view);
 	}
 
 	protected function renderContent()

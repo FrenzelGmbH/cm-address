@@ -1,10 +1,10 @@
 <?php
-namespace frenzelgmbh\cm-address\widgets;
+namespace frenzelgmbh\cmaddress\widgets;
 
 use Yii;
 use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
-use frenzelgmbh\cm-address\models\Post;
+use frenzelgmbh\cmaddress\models\Post;
 
 class PortletPostsStyled extends \frenzelgmbh\appcommon\widgets\Portlet
 {
@@ -26,7 +26,7 @@ class PortletPostsStyled extends \frenzelgmbh\appcommon\widgets\Portlet
 
 	public function init() {
 		parent::init();
-		\frenzelgmbh\cm-address\sblogAsset::register(\Yii::$app->view);
+		\frenzelgmbh\cmaddress\sblogAsset::register(\Yii::$app->view);
 		if(isset($_GET['tag'])){
 			$this->title = "<div class='pull-right'>Posts Tagged with <strong>".Html::encode($_GET['tag'])."</strong></div>";
 		}
