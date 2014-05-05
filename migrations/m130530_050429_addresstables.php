@@ -49,6 +49,9 @@ class m130530_050429_addresstables extends \yii\db\Migration
       'country_id'       => Schema::TYPE_INTEGER,      
     ],$tableOptions);
 
+    $this->addColumn('{{%address}}','latitude',Schema::TYPE_FLOAT .' DEFAULT 0.00');
+    $this->addColumn('{{%address}}','longitude',Schema::TYPE_FLOAT .' DEFAULT 0.00');
+
     $this->createTable('{{%country}}',[
         'id'            => Schema::TYPE_PK,
         'iso2'          => Schema::TYPE_STRING .'(2)',
