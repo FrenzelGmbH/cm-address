@@ -1,7 +1,7 @@
 cm-address
 ==========
 
-Common Address Module
+Common Address Module (Frenzel GmbH 2014) v.0.1
 
 Design
 ======
