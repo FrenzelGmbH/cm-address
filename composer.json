@@ -21,19 +21,11 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "yiisoft/yii2": "*",
-    "kartik-v/yii2-grid": "dev-master",
-    "kartik-v/yii2-widgets":"dev-master",
     "frenzelgmbh/appcommon":"dev-master",
+    "anthonymartin/geo-location":"dev-master",
     "2amigos/yii2-leaflet-markercluster-plugin": "*",
     "2amigos/yii2-leaflet-extension": "*",
     "2amigos/yii2-leaflet-makimarker-plugin": "*"
-  },
-  "require-dev": {
-    "yiisoft/yii2-codeception": "*",
-    "codeception/specify": "*",
-    "codeception/verify": "*",
-    "guzzlehttp/guzzle": "~4.0"
   },
   "autoload": {
     "psr-4": {

@@ -1,6 +1,6 @@
 <?php $this->beginContent('@app/views/layouts/main.php'); ?>
 <div id="content">
-  <div class="cms">
+  <div class="cm-address">
     <?= $content; ?>
   </div>
 </div><!-- container -->

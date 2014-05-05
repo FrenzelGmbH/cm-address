@@ -17,7 +17,7 @@ class sblogAsset extends AssetBundle
     public $sourcePath = '@frenzelgmbh/sblog/assets';
     
     public $css = [
-        'css/sblog.css'
+        'css/cm-address.css'
     ];
     
     public $js = [];
