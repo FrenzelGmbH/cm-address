@@ -11,47 +11,58 @@ class m130530_050429_addresstables extends \yii\db\Migration
 {
 	public function up()
 	{
-		$this->createTable('tbl_address',array(
-      'id'                => 'INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-      'party_id'          => 'INTEGER UNSIGNED NOT NULL',
-      'postCode'          => 'VARCHAR(100)',
-      'streetDescription' => 'VARCHAR(200)',
-      'addressLine'       => 'VARCHAR(200)',
-      'postBox'           => 'VARCHAR(100)',
-      'cityName'          => 'VARCHAR(100)',
-      'region'            => 'VARCHAR(100)', //can hold the nuts definition if needed
-      'countryCode'       => 'INTEGER',
-      'system_key'        => 'VARCHAR(100)',
-      'system_name'       => 'VARCHAR(100)',
-      'system_upate'      => 'INTEGER DEFAULT NULL',
-      'creator_id'        => 'INTEGER NOT NULL',
-      'time_deleted'      => 'INTEGER DEFAULT NULL',
-      'time_create'       => 'INTEGER',
-    ),'CHARACTER SET utf8 COLLATE utf8_bin ENGINE = InnoDB;');
+    
+    switch (Yii::$app->db->driverName) {
+        case 'mysql':
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
+            break;
+        case 'pgsql':
+            $tableOptions = null;
+            break;
+        default:
+            throw new RuntimeException('Your database is not supported!');
+    }
+
+		$this->createTable('{{%address}}',[
+      'id'                => Schema::TYPE_PK,
+      'cityName'          => Schema::TYPE_STRING .'(100)',
+      'zipCode'           => Schema::TYPE_STRING .'(20)',
+      'postBox'           => Schema::TYPE_STRING .'(20)',
+      'addresslineOne'    => Schema::TYPE_STRING .'(100)',
+      'addresslineTwo'    => Schema::TYPE_STRING .'(100)',
+      'regionName'        => Schema::TYPE_STRING .'(50)',
+      'user_id'           => Schema::TYPE_INTEGER.' NULL',
+      //module fields
+      'mod_table'         => Schema::TYPE_STRING .'(100)',
+      'mod_id'            => Schema::TYPE_INTEGER.' NULL',
+      //interface fields
+      'system_key'        => Schema::TYPE_STRING .'(100)',
+      'system_name'       => Schema::TYPE_STRING .'(100)',
+      'system_upate'      => Schema::TYPE_INTEGER.' DEFAULT NULL',
+      // timestamps
+      'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
+      'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
+      //Foreign Keys
+      'country_id'       => Schema::TYPE_INTEGER,      
+    ],$tableOptions);
+
+    $this->createTable('{{%country}}',[
+        'id'            => Schema::TYPE_PK,
+        'iso2'          => Schema::TYPE_STRING .'(2)',
+        'iso3'          => Schema::TYPE_STRING .'(3)',
+        'name'          => Schema::TYPE_STRING .'(100)',
+    ],$tableOptions);
+
+    $this->addForeignKey('fk_address_country', '{{%address}}', 'country_id', '{{%country}}', 'id', 'CASCADE', 'RESTRICT');
+
 	}
 
 	public function down()
 	{
 		//drop FK's first
-		return true;
+    $this->dropForeignKey('fk_address_country', '{{%address}}');
+
+		$this->dropTable('{{%address}}');
+    $this->dropTable('{{%country}}');
 	}
 }
-
-/*
-public function up()
-    {
-    	$this->createTable('{{%handycap}}',array(
-          'id'                      => Schema::TYPE_PK,
-          'user_id'                 => Schema::TYPE_INTEGER.' DEFAULT NULL',
-          'hcp'                     => Schema::TYPE_FLOAT.' DEFAULT 36.0',          
-          'status'                  => Schema::TYPE_STRING .'(255) NOT NULL DEFAULT "created"',
-          'time_deleted'            => Schema::TYPE_INTEGER.' DEFAULT NULL',
-          'time_create'             => Schema::TYPE_INTEGER,
-      ),'CHARACTER SET utf8 COLLATE utf8_bin ENGINE = InnoDB;');
-    }
-
-    public function down()
-    {
-        $this->dropTable('{{%handycap}}');
-    }
- */
