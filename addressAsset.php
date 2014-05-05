@@ -14,7 +14,7 @@ use yii\web\AssetBundle;
  */
 class addressAsset extends AssetBundle
 {
-    public $sourcePath = '@frenzelgmbh/cm-address/assets';
+    public $sourcePath = '@frenzelgmbh/cmaddress/assets';
     
     public $css = [
         'css/cm-address.css'
