@@ -3,6 +3,19 @@ cm-address
 
 Common Address Module (Frenzel GmbH 2014) v.0.1
 
+Installation
+============
+
+Add the following line to your composer.json require section:
+
+```
+"frenzelgmbh/cm-address":"*"
+```
+
+```
+php yii migrate --migrationPath=@vendor/frenzelgmbh/cm-address/migrations
+```
+
 Design
 ======
 
