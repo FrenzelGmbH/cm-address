@@ -10,7 +10,7 @@ Add the following line to your composer.json require section:
 
 ```
 "frenzelgmbh/cm-address":"*"
-``
+```
 
 ```
 php yii migrate --migrationPath=@vendor/frenzelgmbh/cm-address/migrations
