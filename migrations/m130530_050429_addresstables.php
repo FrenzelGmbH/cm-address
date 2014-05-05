@@ -33,6 +33,7 @@ class m130530_050429_addresstables extends \yii\db\Migration
       'addresslineOne'    => Schema::TYPE_STRING .'(100)',
       'addresslineTwo'    => Schema::TYPE_STRING .'(100)',
       'regionName'        => Schema::TYPE_STRING .'(50)',
+      //possible reference to user
       'user_id'           => Schema::TYPE_INTEGER.' NULL',
       //module fields
       'mod_table'         => Schema::TYPE_STRING .'(100)',
