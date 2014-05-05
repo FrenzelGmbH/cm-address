@@ -4,6 +4,7 @@ namespace frenzelgmbh\cmaddress\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use frenzelgmbh\cmaddress\components\GeoLocation;
 
 /**
  * This is the model class for table "address".
