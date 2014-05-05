@@ -57,11 +57,11 @@ class Address extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'mod_id', 'system_upate', 'created_at', 'updated_at', 'country_id'], 'integer'],
-            [['created_at', 'updated_at'], 'required'],
+            // done by timestamp behaviour[['created_at', 'updated_at'], 'required'],
             [['cityName', 'addresslineOne', 'addresslineTwo', 'mod_table', 'system_key', 'system_name'], 'string', 'max' => 100],
             [['zipCode', 'postBox'], 'string', 'max' => 20],
             [['regionName'], 'string', 'max' => 50],
-            [['no_latitude', 'no_longitude'],'string','max'=>20]
+            [['latitude', 'longitude'],'string','max'=>20]
         ];
     }
 
