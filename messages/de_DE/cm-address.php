@@ -1,7 +1,8 @@
 <?php
 
 /**
- * messages de_DE for the golfteamplanner
+ * messages de_DE for the address module
+ * @author Philipp Frenzel <philipp@frenzel.net>
  */
 
 return [
@@ -26,14 +27,5 @@ return [
    'Status'   => 'Status',
    //General Fields
    'Created at' => 'erstellt am',
-   'Deleted at' => 'entfernt am',
-   //Handycap
-   'Hcp' 	  => 'Handycap',
-   'Handycaps' => 'Handycaps',
-   'Handycap Overview' => 'Übersicht Handycaps',
-   'New Handycap' => 'neues Handycap',
-   //Events
-   'Events' => 'Termine',
-   //Players
-   'Manage Players' => 'Spieler verwalten'
+   'Deleted at' => 'entfernt am'
 ];
