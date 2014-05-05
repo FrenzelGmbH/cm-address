@@ -30,7 +30,7 @@ class Module extends BaseModule {
     {
         parent::init();
         $this->setAliases([
-            '@cm-address' => dirname(__FILE__)
+            '@cmaddress' => dirname(__FILE__)
         ]);
         \Yii::$app->i18n->translations['cm-address'] = [
             'class' => 'yii\i18n\PhpMessageSource',

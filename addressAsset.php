@@ -12,9 +12,9 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class sblogAsset extends AssetBundle
+class addressAsset extends AssetBundle
 {
-    public $sourcePath = '@frenzelgmbh/sblog/assets';
+    public $sourcePath = '@frenzelgmbh/cm-address/assets';
     
     public $css = [
         'css/cm-address.css'
