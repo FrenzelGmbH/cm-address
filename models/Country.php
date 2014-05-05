@@ -1,74 +1,59 @@
 <?php
 
-namespace app\modules\parties\models;
+namespace frenzelgmbh\cm-address\models;
+
+use Yii;
 
 /**
- * This is the model class for table "tbl_country".
+ * This is the model class for table "country".
  *
  * @property integer $id
- * @property string $country_code
- * @property string $country_name
+ * @property string $iso2
+ * @property string $iso3
+ * @property string $name
  *
  * @property Address[] $addresses
- * @property Party[] $parties
  */
 class Country extends \yii\db\ActiveRecord
 {
-	/**
-	 * @inheritdoc
-	 */
-	public static function tableName()
-	{
-		return 'tbl_country';
-	}
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%country}}';
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function rules()
-	{
-		return [
-			[['country_code'], 'string', 'max' => 2],
-			[['country_name'], 'string', 'max' => 100]
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['iso2'], 'string', 'max' => 2],
+            [['iso3'], 'string', 'max' => 3],
+            [['name'], 'string', 'max' => 100]
+        ];
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'id' => 'ID',
-			'country_code' => 'Country Code',
-			'country_name' => 'Country Name',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('cm-address', 'ID'),
+            'iso2' => Yii::t('cm-address', 'Iso2'),
+            'iso3' => Yii::t('cm-address', 'Iso3'),
+            'name' => Yii::t('cm-address', 'Name'),
+        ];
+    }
 
-	/**
-	 * @return \yii\db\ActiveRelation
-	 */
-	public function getAddresses()
-	{
-		return $this->hasMany(Address::className(), ['countryCode' => 'id']);
-	}
-
-	/**
-	 * @return \yii\db\ActiveRelation
-	 */
-	public function getParties()
-	{
-		return $this->hasMany(Party::className(), ['registrationCountryCode' => 'id']);
-	}
-
-  /**
-   * [getCountryIdByCode description]
-   * @param  string $code [description]
-   * @return [type]       [description]
-   */
-  public static function getCountryIdByCode($code='AT')
-  {
-    return Country::find()->where(['country_code'=>$code])->One()->id;
-  }
-
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAddresses()
+    {
+        return $this->hasMany(Address::className(), ['country_id' => 'id']);
+    }
 }

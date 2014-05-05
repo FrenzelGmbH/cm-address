@@ -1,143 +1,85 @@
 <?php
 
-namespace app\modules\parties\models;
+namespace frenzelgmbh\cm-address\models;
 
-use \DateTime;
-use frenzelgmbh\appcommon\components\GeoLocation;
+use Yii;
 
 /**
- * This is the model class for table "tbl_address".
+ * This is the model class for table "address".
  *
  * @property integer $id
- * @property integer $party_id
- * @property string $postCode
- * @property string $streetDescription
- * @property string $addressLine
- * @property string $postBox
  * @property string $cityName
- * @property string $region
- * @property integer $countryCode
+ * @property string $zipCode
+ * @property string $postBox
+ * @property string $addresslineOne
+ * @property string $addresslineTwo
+ * @property string $regionName
+ * @property integer $user_id
+ * @property string $mod_table
+ * @property integer $mod_id
  * @property string $system_key
  * @property string $system_name
  * @property integer $system_upate
- * @property integer $creator_id
- * @property integer $time_deleted
- * @property integer $time_create
- * @property float $no_latitude
- * @property float $no_longitude
+ * @property integer $created_at
+ * @property integer $updated_at
+ * @property integer $country_id
  *
- * @property Party $party
+ * @property Country $country
  */
 class Address extends \yii\db\ActiveRecord
 {
-	/**
-	 * @inheritdoc
-	 */
-	public static function tableName()
-	{
-		return 'tbl_address';
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function rules()
-	{
-		return [
-			[['party_id'], 'required'],
-			[['party_id', 'countryCode', 'system_upate', 'creator_id', 'time_deleted', 'time_create'], 'integer'],
-			[['postCode', 'postBox', 'cityName', 'region', 'system_key', 'system_name'], 'string', 'max' => 100],
-			[['streetDescription', 'addressLine'], 'string', 'max' => 200],
-      [['no_latitude', 'no_longitude'],'string']
-		];
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'id'                => \Yii::t('app','ID'),
-			'party_id'          => \Yii::t('app','Party ID'),
-			'postCode'          => \Yii::t('app','Post Code'),
-			'streetDescription' => \Yii::t('app','Street Description'),
-			'addressLine'       => \Yii::t('app','Address Line'),
-			'postBox'           => \Yii::t('app','Post Box'),
-			'cityName'          => \Yii::t('app','City Name'),
-			'region'            => \Yii::t('app','Region'),
-			'countryCode'       => \Yii::t('app','Country Code'),
-			'system_key'        => \Yii::t('app','System Key'),
-			'system_name'       => \Yii::t('app','System Name'),
-			'system_upate'      => \Yii::t('app','System Upate'),
-			'creator_id'        => \Yii::t('app','Creator ID'),
-			'time_deleted'      => \Yii::t('app','Time Deleted'),
-			'time_create'       => \Yii::t('app','Time Create'),
-      'no_latitude'       => \Yii::t('app','Latitude'),
-      'no_longitude'      => \Yii::t('app','Longitude')
-		];
-	}
-
-	/**
-	 * @return \yii\db\ActiveRelation
-	 */
-	public function getParty()
-	{
-		return $this->hasOne(Party::className(), ['id' => 'party_id']);
-	}
-
-  /**
-   * @return \yii\db\ActiveRelation
-   */
-  public function getCountry()
-  {
-    return $this->hasOne(Country::className(), ['id' => 'countryCode']);
-  }
-
-  /**
-   * @return string name of country
-   */
-  public function getCountryName()
-  {
-    return $this->country->country_name;
-  }
-
-	/**
-	 * [beforeSave description]
-	 * @param  [type] $insert [description]
-	 * @return [type]         [description]
-	 */
-	public function beforeSave($insert)
-  {
-    $date = new DateTime('now');
-    if($this->isNewRecord)
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
     {
-      if(\Yii::$app->user->isGuest)
-      {
-        $this->creator_id = 0; //external system writer
-      }
-      else
-      {
-        $this->creator_id = \Yii::$app->user->identity->id;
-      }      
+        return '{{%address}}';
     }
-    if($this->system_name == '' OR is_Null($this->system_name))
-    {
-      $this->system_name = 'internal';
-    }
-    if(is_null($this->time_create))
-    {
-      $this->time_create = $date->format("U");
-    }
-    $this->system_upate = $date->format("U");
-    
-    //geolocating
-    $location = $this->addressLine . ' ,'.$this->cityName.' ,'. $this->country->country_name;
-    $response = GeoLocation::getGeocodeFromGoogle($location);
-    $this->no_latitude = $response->results[0]->geometry->location->lat;
-    $this->no_longitude = $response->results[0]->geometry->location->lng;
-    
-    return parent::beforeSave($insert);
-  }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['user_id', 'mod_id', 'system_upate', 'created_at', 'updated_at', 'country_id'], 'integer'],
+            [['created_at', 'updated_at'], 'required'],
+            [['cityName', 'addresslineOne', 'addresslineTwo', 'mod_table', 'system_key', 'system_name'], 'string', 'max' => 100],
+            [['zipCode', 'postBox'], 'string', 'max' => 20],
+            [['regionName'], 'string', 'max' => 50]
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('cm-address', 'ID'),
+            'cityName' => Yii::t('cm-address', 'City'),
+            'zipCode' => Yii::t('cm-address', 'Zip Code'),
+            'postBox' => Yii::t('cm-address', 'Post Box'),
+            'addresslineOne' => Yii::t('cm-address', 'Addressline One'),
+            'addresslineTwo' => Yii::t('cm-address', 'Addressline Two'),
+            'regionName' => Yii::t('cm-address', 'Region'),
+            'user_id' => Yii::t('cm-address', 'User'),
+            'mod_table' => Yii::t('cm-address', 'Mod Table'),
+            'mod_id' => Yii::t('cm-address', 'Mod ID'),
+            'system_key' => Yii::t('cm-address', 'System Key'),
+            'system_name' => Yii::t('cm-address', 'System Name'),
+            'system_upate' => Yii::t('cm-address', 'System Upate'),
+            'created_at' => Yii::t('cm-address', 'Created At'),
+            'updated_at' => Yii::t('cm-address', 'Updated At'),
+            'country_id' => Yii::t('cm-address', 'Country ID'),
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountry()
+    {
+        return $this->hasOne(Country::className(), ['id' => 'country_id']);
+    }
 }
