@@ -28,7 +28,8 @@ class DefaultController extends AppController
           [
             'allow'=>true,
             'actions'=>array(
-              'index'
+              'index',
+              'test'
             ),
             'roles'=>array('*'),
           ]
@@ -42,4 +43,10 @@ class DefaultController extends AppController
     $this->layout = \frenzelgmbh\appcommon\controllers\AppController::adminlayout;
 		return $this->render('index');
 	}
+
+  public function actionTest()
+  {
+    $this->layout = \frenzelgmbh\appcommon\controllers\AppController::adminlayout;
+    return $this->render('test');
+  }
 }
