@@ -32,6 +32,13 @@ class DefaultController extends AppController
               'test'
             ),
             'roles'=>array('*'),
+          ],
+          [
+            'allow'=>true,
+            'actions'=>array(              
+              'test'
+            ),
+            'roles'=>array('?'),
           ]
         ]
       ]
