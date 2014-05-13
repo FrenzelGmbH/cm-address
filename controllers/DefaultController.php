@@ -4,6 +4,8 @@ namespace frenzelgmbh\cmaddress\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
+
 use frenzelgmbh\appcommon\controllers\AppController;
 
 use frenzelgmbh\cmaddress\models\Address;
@@ -74,11 +76,9 @@ class DefaultController extends AppController
 
   /**
    * [actionCreate description]
-   * @param  string $module [description]
-   * @param  integer $id     [description]
    * @return view         [description]
    */
-  public function actionCreate($module,$id){
+  public function actionCreate(){
     $model = new Address;
 
     if ($model->load(Yii::$app->request->post()) && $model->save()) 
@@ -95,9 +95,7 @@ class DefaultController extends AppController
       }
     } 
     else 
-    {    
-      $model->mod_table = $module;
-      $model->mod_id = $id;
+    {
       return $this->renderAjax('@frenzelgmbh/cmaddress/widgets/views/iviews/_form', [
           'model' => $model,
       ]);

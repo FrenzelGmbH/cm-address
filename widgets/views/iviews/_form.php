@@ -16,7 +16,7 @@ use kartik\widgets\Select2;
 
 $script = <<<SKRIPT
 
-$('#AddressCreateForm').on('click',function(event){
+$('#submitAddressCreate').on('click',function(event){
   $('#AddressCreateForm').ajaxSubmit(
   {
     type : "POST",
@@ -35,21 +35,21 @@ $this->registerJs($script);
 
 <div class="address-form">
 
-	<?php $form = ActiveForm::begin([
+  <?php $form = ActiveForm::begin([
     'id' => 'AddressCreateForm',
     'action' => Url::to(['/address/default/create']),
   ]); ?>
 
-		<?= Html::activeHiddenInput($model,'mod_id'); ?>
+    <?= Html::activeHiddenInput($model,'mod_id'); ?>
     <?= Html::activeHiddenInput($model,'mod_table'); ?>
 
-		<?= $form->field($model, 'addresslineOne')->textInput(['maxlength' => 200]) ?>
+    <?= $form->field($model, 'addresslineOne')->textInput(['maxlength' => 200]) ?>
 
-		<?= $form->field($model, 'addresslineTwo')->textInput(['maxlength' => 200]) ?>
+    <?= $form->field($model, 'addresslineTwo')->textInput(['maxlength' => 200]) ?>
 
-		<?= $form->field($model, 'zipCode')->textInput(['maxlength' => 100]) ?>
+    <?= $form->field($model, 'zipCode')->textInput(['maxlength' => 100]) ?>
 
-		<?= $form->field($model, 'cityName')->textInput(['maxlength' => 100]) ?>
+    <?= $form->field($model, 'cityName')->textInput(['maxlength' => 100]) ?>
 
 <?php
 
@@ -84,7 +84,7 @@ SCRIPT;
 
 ?>
 
-		<?= $form->field($model, 'country_id')->widget(Select2::classname(),[
+    <?= $form->field($model, 'country_id')->widget(Select2::classname(),[
           'pluginOptions'=>[
             'allowClear' => true,
             'minimumInputLength' => 2,
@@ -97,15 +97,15 @@ SCRIPT;
             'initSelection' => new JsExpression($fInitSelection)
           ]
     ]); ?>
-	
-		<?= $form->field($model, 'postBox')->textInput(['maxlength' => 100]) ?>		
+  
+    <?= $form->field($model, 'postBox')->textInput(['maxlength' => 100]) ?>   
 
-		<?= $form->field($model, 'regionName')->textInput(['maxlength' => 100]) ?>		
+    <?= $form->field($model, 'regionName')->textInput(['maxlength' => 100]) ?>    
 
-		<div class="form-group">
-			<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-		</div>
+    <div class="form-group">
+      <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary','id'=>'submitAddressCreate']) ?>
+    </div>
 
-	<?php ActiveForm::end(); ?>
+  <?php ActiveForm::end(); ?>
 
 </div>

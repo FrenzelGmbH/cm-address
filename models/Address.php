@@ -111,9 +111,12 @@ class Address extends \yii\db\ActiveRecord
         //geolocating
         $location = $this->addresslineOne . ' ,' . $this->cityName;
         $response = GeoLocation::getGeocodeFromGoogle($location);
-        $this->latitude = $response->results[0]->geometry->location->lat;
-        $this->longitude = $response->results[0]->geometry->location->lng;
-
+        if(array_key_exists(0, $response->results))
+        {
+            $this->latitude = $response->results[0]->geometry->location->lat;
+            $this->longitude = $response->results[0]->geometry->location->lng;
+        }
+        
         return parent::beforeSave($insert);
     }
 }
