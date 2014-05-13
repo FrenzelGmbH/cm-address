@@ -43,10 +43,10 @@ class m130530_050429_addresstables extends \yii\db\Migration
       'system_name'       => Schema::TYPE_STRING .'(100)',
       'system_upate'      => Schema::TYPE_INTEGER.' DEFAULT NULL',
       // timestamps
-      'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
-      'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
+      'created_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
+      'updated_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
       //Foreign Keys
-      'country_id'       => Schema::TYPE_INTEGER,      
+      'country_id'        => Schema::TYPE_INTEGER,      
     ],$tableOptions);
 
     $this->addColumn('{{%address}}','latitude',Schema::TYPE_FLOAT .' DEFAULT 0.00');
