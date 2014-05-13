@@ -16,6 +16,17 @@ Add the following line to your composer.json require section:
 php yii migrate --migrationPath=@vendor/frenzelgmbh/cmaddress/migrations
 ```
 
+Inside your yii-config, pls. add the following lines to your modules section
+```
+'address'=>[
+  'class' => 'frenzelgmbh\cmaddress\Module',
+],
+```
+
+After this, you should be able to see the set of build in widgets and options under:
+
+http://yourhost/index.php?r=address/default/test
+
 Design
 ======
 
