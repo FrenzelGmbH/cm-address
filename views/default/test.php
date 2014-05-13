@@ -24,4 +24,27 @@
 
 	</fieldset>
 
+  <fieldset>
+    <legend>Related Address Grid</legend>
+
+    <div class="well">
+      <p>
+        Here we make the test for the related address grid 
+        which renders an asscociated address to the passed over: <br>
+        * MODULE <br>
+        * ID <br>
+      </p>
+    </div>
+
+    <?php 
+      if(class_exists('\frenzelgmbh\cmaddress\widgets\RelatedAddressGrid')){
+        echo \frenzelgmbh\cmaddress\widgets\RelatedAddressGrid::widget(array(
+          'module'      => 'cm_address_test',
+          'id'          => 1
+        )); 
+      }
+    ?>
+
+  </fieldset>
+
 </div>

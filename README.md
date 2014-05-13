@@ -55,3 +55,13 @@ if(class_exists('\frenzelgmbh\cmaddress\widgets\CreateAddressModal')){
   )); 
 }
 ```
+
+The "related"-Grid:
+```php
+if(class_exists('\frenzelgmbh\cmaddress\widgets\RelatedAddressGrid')){
+  echo \frenzelgmbh\cmaddress\widgets\RelatedAddressGrid::widget(array(
+    'module'      => 'tbl_test',
+    'id'          => 1
+  )); 
+}
+```

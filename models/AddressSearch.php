@@ -26,7 +26,14 @@ class AddressSearch extends Address
         return Model::scenarios();
     }
 
-    public function search($params)
+    /**
+     * [search description]
+     * @param  array $params [description]
+     * @param  string $module [description]
+     * @param  integer $id     [description]
+     * @return [type]         [description]
+     */
+    public function search($params,$module=NULL,$id=NULL)
     {
         $query = Address::find();
 
@@ -41,7 +48,7 @@ class AddressSearch extends Address
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'mod_id' => $this->mod_id,
+            'mod_id' => is_null($id)?$this->mod_id:$id,
             'system_upate' => $this->system_upate,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
@@ -54,7 +61,7 @@ class AddressSearch extends Address
             ->andFilterWhere(['like', 'addresslineOne', $this->addresslineOne])
             ->andFilterWhere(['like', 'addresslineTwo', $this->addresslineTwo])
             ->andFilterWhere(['like', 'regionName', $this->regionName])
-            ->andFilterWhere(['like', 'mod_table', $this->mod_table])
+            ->andFilterWhere(['like', 'mod_table', is_null($module)?$this->mod_table:$module])
             ->andFilterWhere(['like', 'system_key', $this->system_key])
             ->andFilterWhere(['like', 'system_name', $this->system_name]);
 
