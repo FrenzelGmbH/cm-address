@@ -34,7 +34,7 @@ MODALJS;
 
 <div class="navbar navbar-default" role="navigation">
   <?= Html::a(\Yii::t('app','Create'), [
-      '/address/default/create'
+      '/address/default/create',
       'module' => $module, 
       'id' => $id,
     ], 

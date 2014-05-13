@@ -64,7 +64,6 @@ SCRIPT;
 ?>
 
 		<?= $form->field($model, 'country_id')->widget(Select2::classname(),[
-          'modal' => true,
           'pluginOptions'=>[
             'allowClear' => true,
             'minimumInputLength' => 2,
