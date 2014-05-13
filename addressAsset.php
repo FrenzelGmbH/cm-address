@@ -22,5 +22,7 @@ class addressAsset extends AssetBundle
     
     public $js = [];
     
-    public $depends = [];
+    public $depends = [
+      'frenzelgmbh\appcommon\commonAsset'
+    ];
 }
