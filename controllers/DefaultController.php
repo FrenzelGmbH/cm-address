@@ -107,9 +107,9 @@ class DefaultController extends AppController
     $query = new Query;
     if(!is_Null($search))
     {
-      $mainQuery = $query->select('id, country_name AS text')
+      $mainQuery = $query->select('id, iso3 AS text')
         ->from('tbl_country')
-        ->where('UPPER(country_name) LIKE "%'.strtoupper($search).'%"');
+        ->where('UPPER(iso3) LIKE "%'.strtoupper($search).'%"');
 
       $command = $mainQuery->createCommand();
       $rows = $command->queryAll();
@@ -119,7 +119,7 @@ class DefaultController extends AppController
     {     
       if(!is_null($id))
       {
-        $clean['results'] = ['id'=> $id,'text' => Country::findOne($id)->country_name];
+        $clean['results'] = ['id'=> $id,'text' => Country::findOne($id)->iso3];
       }else
       {
         $clean['results'] = ['id'=> 0,'text' => 'None found'];
