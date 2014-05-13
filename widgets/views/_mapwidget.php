@@ -45,7 +45,7 @@ Pjax::begin(['id'=>'WidgetLocationPjax']);
   echo ListView::widget(array(
 		'id' => 'LocationsTable',
 		'dataProvider'=>$dpLocations,
-		'itemView' => '@frenzelgmbh/sblog/widgets/views/iviews/_location_view',
+		'itemView' => '@frenzelgmbh/cmaddress/widgets/views/iviews/_location_view',
 		'layout' => '{items}',
 		)
 	);

@@ -6,6 +6,8 @@ use Yii;
 use yii\filters\VerbFilter;
 use frenzelgmbh\appcommon\controllers\AppController;
 
+use frenzelgmbh\cmaddress\models\Address;
+
 class DefaultController extends AppController
 {
   
@@ -29,7 +31,8 @@ class DefaultController extends AppController
             'allow'=>true,
             'actions'=>array(
               'index',
-              'test'
+              'test',
+              'create'
             ),
             'roles'=>array('*'),
           ],
@@ -55,5 +58,22 @@ class DefaultController extends AppController
   {
     $this->layout = \frenzelgmbh\appcommon\controllers\AppController::adminlayout;
     return $this->render('test');
+  }
+
+
+  public function actionCreate($module,$id){
+    $model = new Address;
+
+    if ($model->load(Yii::$app->request->post()) && $model->save()) {
+      return $this->redirect(['view', 'id' => $model->id]);
+    } 
+    else 
+    {    
+      $model->mod_table = $module;
+      $model->mod_id = $id;
+      return $this->renderAjax('@frenzelgmbh/cmaddress/widgets/views/iviews/_form', [
+          'model' => $model,
+      ]);
+    }
   }
 }

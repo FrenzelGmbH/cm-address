@@ -41,3 +41,17 @@ Geolocation
 
 The module tries to enrich each passed over address with the latitude and longitude, which will be looked
 up by combining street, address and state information.
+
+
+Widgets
+=======
+
+The "create"-Button:
+```php
+if(class_exists('\frenzelgmbh\cmaddress\widgets\CreateAddressModal')){
+  echo \frenzelgmbh\cmaddress\widgets\CreateAddressModal::widget(array(
+    'module'      => 'tbl_test',
+    'id'          => 1
+  )); 
+}
+```

@@ -6,12 +6,13 @@ use yii\bootstrap\Modal;
 ?>
 
 <?php 
-  Modal::begin([
-    'id'=>'caddressmod',
-    'header' => '<i class="fa fa-info"></i>Loading',
-  ]);
-  echo 'pls. wait one moment...';
-  Modal::end();
+  
+Modal::begin([
+  'id'=>'caddressmod',
+  'header' => '<i class="fa fa-info"></i>Loading',
+]);
+echo 'pls. wait one moment...';
+Modal::end();
 
 $modalJS = <<<MODALJS
 
@@ -32,11 +33,10 @@ MODALJS;
 ?>
 
 <div class="navbar navbar-default" role="navigation">
-  <?php echo Html::a(\Yii::t('app','Create'), [
-      'window', 
-      'id' => $model->id, 
-      'win'=>'address_create',
-      'mainid'=>$model->id
+  <?= Html::a(\Yii::t('app','Create'), [
+      '/address/default/create'
+      'module' => $module, 
+      'id' => $id,
     ], 
     [
       'class' => 'btn btn-info navbar-btn',
