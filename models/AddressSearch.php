@@ -41,9 +41,11 @@ class AddressSearch extends Address
             'query' => $query,
         ]);
 
+        /*
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
+        */
 
         $query->andFilterWhere([
             'id' => $this->id,
