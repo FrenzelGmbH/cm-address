@@ -47,4 +47,21 @@
 
   </fieldset>
 
+  <fieldset>
+    <legend>IP Location</legend>
+
+    <div class="well">
+      <p>
+        IP Location, based upon the information we get from the enviroment variables.
+      </p>
+    </div>
+
+    <?php 
+      if(class_exists('\frenzelgmbh\cmaddress\widgets\IPLocation')){
+        echo \frenzelgmbh\cmaddress\widgets\IPLocation::widget(); 
+      }
+    ?>
+
+  </fieldset>
+
 </div>

@@ -39,9 +39,11 @@ class IPLocation extends AdminPortlet
    */
   protected function renderContent()
   {
+    //initialize the browser
     $buzz    = new \Buzz\Browser(new \Buzz\Client\Curl());
     $adapter = new \Geocoder\HttpAdapter\BuzzHttpAdapter($buzz);
     
+    //create geocoder
     $geocoder = new \Geocoder\Geocoder();
     $geocoder->registerProviders([
       new \Geocoder\Provider\FreeGeoIpProvider($adapter)

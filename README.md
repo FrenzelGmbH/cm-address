@@ -69,3 +69,10 @@ if(class_exists('\frenzelgmbh\cmaddress\widgets\RelatedAddressGrid')){
   )); 
 }
 ```
+
+Visitors IP Location:
+```php
+if(class_exists('\frenzelgmbh\cmaddress\widgets\IPLocation')){
+  echo \frenzelgmbh\cmaddress\widgets\IPLocation::widget(); 
+}
+```
