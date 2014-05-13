@@ -16,10 +16,14 @@ Add the following line to your composer.json require section:
 php yii migrate --migrationPath=@vendor/frenzelgmbh/cmaddress/migrations
 ```
 
-Inside your yii-config, pls. add the following lines to your modules section
+Inside your yii-config, pls. add the following lines to your modules section. As you
+might see, the gridview needs to be implemented too.
 ```
 'address'=>[
   'class' => 'frenzelgmbh\cmaddress\Module',
+],
+'gridview' =>  [
+  'class' => '\kartik\grid\Module'
 ],
 ```
 
