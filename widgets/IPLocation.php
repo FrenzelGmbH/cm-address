@@ -40,8 +40,7 @@ class IPLocation extends AdminPortlet
   protected function renderContent()
   {
     //initialize the browser
-    $buzz    = new \Buzz\Browser(new \Buzz\Client\Curl());
-    $adapter = new \Geocoder\HttpAdapter\BuzzHttpAdapter($buzz);
+    $adapter = new \Geocoder\HttpAdapter\GuzzleHttpAdapter();
     
     //create geocoder
     $geocoder = new \Geocoder\Geocoder();

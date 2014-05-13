@@ -7,40 +7,42 @@ use kartik\icons\Icon;
 
 <?php
 
-$center = new dosamigos\leaflet\types\LatLng(['lat' => $latitude, 'lng' => $longitude]);
+if($latitude <> 0)
+{
 
-$layer = new dosamigos\leaflet\layers\TileLayer([
-     //'urlTemplate' => 'http://{s}.tile.cloudmade.com/c78ff4e5762545188f82a9a4cd552d54/997/256/{z}/{x}/{y}.png',
-     'urlTemplate' => 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-     'map' => 'BlogMap'.$location->param2_int,
-     'clientOptions' =>[
-        'attribution' => 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-     ]
-]);
+  $center = new dosamigos\leaflet\types\LatLng(['lat' => $latitude, 'lng' => $longitude]);
 
-$leafLet = new dosamigos\leaflet\LeafLet([
-  'center' => $center,
-  'zoom' => 10,
-  'TileLayer' => $layer,
-  'name' => 'IPLocation'.$location->param2_int
-]);
+  $layer = new dosamigos\leaflet\layers\TileLayer([
+       //'urlTemplate' => 'http://{s}.tile.cloudmade.com/c78ff4e5762545188f82a9a4cd552d54/997/256/{z}/{x}/{y}.png',
+       'urlTemplate' => 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+       'map' => 'BlogMap'.$location->param2_int,
+       'clientOptions' =>[
+          'attribution' => 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+       ]
+  ]);
 
-// Initialize plugin
-$makimarkers = new dosamigos\leaflet\plugins\makimarker\MakiMarker(['name' => 'makimarker']);
+  $leafLet = new dosamigos\leaflet\LeafLet([
+    'center' => $center,
+    'zoom' => 10,
+    'TileLayer' => $layer,
+    'name' => 'IPLocation'.$location->param2_int
+  ]);
 
-$leafLet->installPlugin($makimarkers);
+  // Initialize plugin
+  $makimarkers = new dosamigos\leaflet\plugins\makimarker\MakiMarker(['name' => 'makimarker']);
 
-// generate icon through its icon
-$marker = new dosamigos\leaflet\layers\Marker([
-  'latLng' => $center,
-  'icon' => $leafLet->plugins->makimarker->make("info",['color' => "#b0b", 'size' => "m"]),
-  'popupContent' => 'IP Location'
-]);
+  $leafLet->installPlugin($makimarkers);
 
-$leafLet->addLayer($marker);
+  // generate icon through its icon
+  $marker = new dosamigos\leaflet\layers\Marker([
+    'latLng' => $center,
+    'icon' => $leafLet->plugins->makimarker->make("info",['color' => "#b0b", 'size' => "m"]),
+    'popupContent' => 'IP Location'
+  ]);
 
-echo dosamigos\leaflet\widgets\Map::widget(['leafLet' => $leafLet,'options' => ['style' => 'height: 400px']]);
+  $leafLet->addLayer($marker);
 
+  echo dosamigos\leaflet\widgets\Map::widget(['leafLet' => $leafLet,'options' => ['style' => 'height: 400px']]);
 }
 
 ?>
