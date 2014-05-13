@@ -9,19 +9,8 @@ use yii\grid\GridView;
  * @var app\models\AddressSearch $searchModel
  */
 
-$this->title = Yii::t('cm-address', 'Addresses');
 ?>
-<div class="address-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a(Yii::t('cm-address', 'Create {modelClass}', [
-                'modelClass' => 'Address',
-            ]), ['create'], ['class' => 'btn btn-success']) 
-        ?>
-    </p>
+<div class="address-grid">
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
