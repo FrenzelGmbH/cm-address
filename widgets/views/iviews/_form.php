@@ -13,11 +13,32 @@ use kartik\widgets\Select2;
  * @var app\modules\parties\models\Address $model
  * @var yii\widgets\ActiveForm $form
  */
+
+$script = <<<SKRIPT
+
+$('#AddressCreateForm').on('click',function(event){
+  $('#AddressCreateForm').ajaxSubmit(
+  {
+    type : "POST",
+    success: function(data){
+      $('#caddressmod').modal('hide');
+    }
+  });
+  event.preventDefault();
+});
+
+SKRIPT;
+
+$this->registerJs($script);
+
 ?>
 
 <div class="address-form">
 
-	<?php $form = ActiveForm::begin(); ?>
+	<?php $form = ActiveForm::begin([
+    'id' => 'AddressCreateForm',
+    'action' => Url::to(['/address/default/create']),
+  ]); ?>
 
 		<?= Html::activeHiddenInput($model,'mod_id'); ?>
     <?= Html::activeHiddenInput($model,'mod_table'); ?>

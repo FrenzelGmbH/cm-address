@@ -81,8 +81,18 @@ class DefaultController extends AppController
   public function actionCreate($module,$id){
     $model = new Address;
 
-    if ($model->load(Yii::$app->request->post()) && $model->save()) {
-      return $this->redirect(['view', 'id' => $model->id]);
+    if ($model->load(Yii::$app->request->post()) && $model->save()) 
+    {
+      if (\Yii::$app->request->isAjax) 
+      {
+        header('Content-type: application/json');
+        echo Json::encode(['status'=>'DONE','model'=>$model]);
+        exit();
+      }
+      else
+      {
+        return $this->redirect(['view', 'id' => $model->id]);
+      }
     } 
     else 
     {    
