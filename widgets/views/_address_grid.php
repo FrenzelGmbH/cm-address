@@ -18,8 +18,9 @@ $this->title = Yii::t('cm-address', 'Addresses');
 
     <p>
         <?= Html::a(Yii::t('cm-address', 'Create {modelClass}', [
-  'modelClass' => 'Address',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+                'modelClass' => 'Address',
+            ]), ['create'], ['class' => 'btn btn-success']) 
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -28,11 +29,11 @@ $this->title = Yii::t('cm-address', 'Addresses');
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'cityName',
             'zipCode',
-            'postBox',
+            'cityName',
+            //'postBox',
             'addresslineOne',
-            // 'addresslineTwo',
+            'addresslineTwo',
             // 'regionName',
             // 'user_id',
             // 'mod_table',
