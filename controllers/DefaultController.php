@@ -7,6 +7,7 @@ use yii\filters\VerbFilter;
 use frenzelgmbh\appcommon\controllers\AppController;
 
 use frenzelgmbh\cmaddress\models\Address;
+use frenzelgmbh\cmaddress\models\Country;
 
 class DefaultController extends AppController
 {
@@ -108,7 +109,7 @@ class DefaultController extends AppController
     if(!is_Null($search))
     {
       $mainQuery = $query->select('id, iso3 AS text')
-        ->from('tbl_country')
+        ->from('{{%country}}')
         ->where('UPPER(iso3) LIKE "%'.strtoupper($search).'%"');
 
       $command = $mainQuery->createCommand();
