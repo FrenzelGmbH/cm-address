@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
+use yii\widgets\Pjax;
 
 /**
  * @var yii\web\View $this
@@ -12,9 +13,14 @@ use yii\grid\GridView;
 ?>
 <div class="address-grid">
 
-    <?= GridView::widget([
+<?php 
+Pjax::begin();
+
+    echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'responsive' => true,
+        'hover' => true,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -36,6 +42,9 @@ use yii\grid\GridView;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+
+Pjax::end(); 
+?>
 
 </div>
