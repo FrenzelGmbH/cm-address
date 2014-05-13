@@ -76,9 +76,11 @@ class DefaultController extends AppController
 
   /**
    * [actionCreate description]
+   * @param string module
+   * @param integer id
    * @return view         [description]
    */
-  public function actionCreate(){
+  public function actionCreate($module=NULL,$id=NULL){
     $model = new Address;
 
     if ($model->load(Yii::$app->request->post()) && $model->save()) 
@@ -96,6 +98,11 @@ class DefaultController extends AppController
     } 
     else 
     {
+      if(!is_null($module) && !is_null($id))
+      {
+        $model->mod_table = $module;
+        $model->mod_id = $id;  
+      }
       return $this->renderAjax('@frenzelgmbh/cmaddress/widgets/views/iviews/_form', [
           'model' => $model,
       ]);
