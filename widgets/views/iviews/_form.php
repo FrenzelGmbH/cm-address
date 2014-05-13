@@ -19,13 +19,14 @@ use kartik\widgets\Select2;
 
 	<?php $form = ActiveForm::begin(); ?>
 
-		<?= Html::activeHiddenInput($model,'party_id'); ?>
+		<?= Html::activeHiddenInput($model,'mod_id'); ?>
+    <?= Html::activeHiddenInput($model,'mod_table'); ?>
 
-		<?= $form->field($model, 'addressLine')->textInput(['maxlength' => 200]) ?>
+		<?= $form->field($model, 'addresslineOne')->textInput(['maxlength' => 200]) ?>
 
-		<?= $form->field($model, 'streetDescription')->textInput(['maxlength' => 200]) ?>
+		<?= $form->field($model, 'addresslineTwo')->textInput(['maxlength' => 200]) ?>
 
-		<?= $form->field($model, 'postCode')->textInput(['maxlength' => 100]) ?>
+		<?= $form->field($model, 'zipCode')->textInput(['maxlength' => 100]) ?>
 
 		<?= $form->field($model, 'cityName')->textInput(['maxlength' => 100]) ?>
 
@@ -62,7 +63,7 @@ SCRIPT;
 
 ?>
 
-		<?= $form->field($model, 'countryCode')->widget(Select2::classname(),[
+		<?= $form->field($model, 'country_id')->widget(Select2::classname(),[
           'modal' => true,
           'pluginOptions'=>[
             'allowClear' => true,
@@ -79,7 +80,7 @@ SCRIPT;
 	
 		<?= $form->field($model, 'postBox')->textInput(['maxlength' => 100]) ?>		
 
-		<?= $form->field($model, 'region')->textInput(['maxlength' => 100]) ?>		
+		<?= $form->field($model, 'regionName')->textInput(['maxlength' => 100]) ?>		
 
 		<div class="form-group">
 			<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
