@@ -32,15 +32,13 @@ MODALJS;
 
 ?>
 
-<div class="navbar navbar-default" role="navigation">
-  <?= Html::a(\Yii::t('app','Create'), [
-      '/address/default/create',
-      'module' => $module, 
-      'id' => $id,
-    ], 
-    [
-      'class' => 'btn btn-info navbar-btn',
-      'id' => 'mod_address_add'
-    ]
-  );?>
-</div>
+<?= Html::a(\Yii::t('app','Create'), [
+    '/address/default/create',
+    'module' => $module, 
+    'id' => $id,
+  ], 
+  [
+    'class' => 'btn btn-info navbar-btn',
+    'id' => 'mod_address_add'
+  ]
+);?>
