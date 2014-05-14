@@ -57,10 +57,20 @@ class IPLocation extends AdminPortlet
 
     $result = $geocoder->geocode($client_ip);
 
-    echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
-      'latitude'      => $result->getLatitude(),
-      'longitude'     => $result->getLongitude()
-    ]);
+    if($result->getLatitude() == 0)
+    {
+      echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
+        'latitude'      => 48.8077,
+        'longitude'     => 9.15362
+      ]);
+    }
+    else
+    {
+      echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
+        'latitude'      => $result->getLatitude(),
+        'longitude'     => $result->getLongitude()
+      ]);
+    } 
   }
 
 }

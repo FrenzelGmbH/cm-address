@@ -1,3 +1,16 @@
+<?php
+
+use yii\helpers\Html;
+
+/**
+ * @var yii\web\View $this
+ * @var string $module
+ * @var integer $id
+ */
+
+$this->title = Yii::t('cm-address', 'test');
+?>
+
 <div class="posts-default-index">
 	<h1><?= $this->context->action->uniqueId; ?></h1>
 	
