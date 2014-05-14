@@ -23,6 +23,15 @@ class IPLocation extends AdminPortlet
    * @var string title that will be displayed when enabling Admin Portlet
    */
   public $title='Show Location';
+
+  /**
+   * define the options for the rendering of the map widget
+   * @var [type]
+   */
+  public $options=[
+    'height' => '400px',
+    'width'  => '100%'
+  ];
   
   /**
    * [init description]
@@ -68,7 +77,8 @@ class IPLocation extends AdminPortlet
     {
       echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
         'latitude'      => $result->getLatitude(),
-        'longitude'     => $result->getLongitude()
+        'longitude'     => $result->getLongitude(),
+        'options'       => $this->options,
       ]);
     } 
   }
