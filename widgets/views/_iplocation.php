@@ -16,7 +16,7 @@ $layer = new dosamigos\leaflet\layers\TileLayer([
 
 $leafLet = new dosamigos\leaflet\LeafLet([
   'center' => $center,
-  'zoom' => 10,
+  'zoom' => 13,
   'TileLayer' => $layer,
   'name' => 'BlogMap'.str_replace('.', '', $latitude)
 ]);
