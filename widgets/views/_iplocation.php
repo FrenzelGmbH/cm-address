@@ -18,7 +18,7 @@ $leafLet = new dosamigos\leaflet\LeafLet([
   'center' => $center,
   'zoom' => 10,
   'TileLayer' => $layer,
-  'name' => 'IPLocation'.str_replace('.', '', $latitude)
+  'name' => 'BlogMap'.str_replace('.', '', $latitude)
 ]);
 
 // Initialize plugin
