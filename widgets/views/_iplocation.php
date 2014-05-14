@@ -23,7 +23,6 @@ $leafLet = new dosamigos\leaflet\LeafLet([
 
 // Initialize plugin
 $makimarkers = new dosamigos\leaflet\plugins\makimarker\MakiMarker(['name' => 'makimarker']);
-
 $leafLet->installPlugin($makimarkers);
 
 // generate icon through its icon
