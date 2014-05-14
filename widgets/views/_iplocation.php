@@ -8,7 +8,7 @@ $center = new dosamigos\leaflet\types\LatLng(['lat' => $latitude, 'lng' => $long
 $layer = new dosamigos\leaflet\layers\TileLayer([
      //'urlTemplate' => 'http://{s}.tile.cloudmade.com/c78ff4e5762545188f82a9a4cd552d54/997/256/{z}/{x}/{y}.png',
      'urlTemplate' => 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-     'map' => 'BlogMap'.$location->param2_int,
+     'map' => 'BlogMap'.str_replace('.', '', $latitude),
      'clientOptions' =>[
         'attribution' => 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
      ]
@@ -18,7 +18,7 @@ $leafLet = new dosamigos\leaflet\LeafLet([
   'center' => $center,
   'zoom' => 10,
   'TileLayer' => $layer,
-  'name' => 'IPLocation'.$location->param2_int
+  'name' => 'IPLocation'.str_replace('.', '', $latitude)
 ]);
 
 // Initialize plugin
