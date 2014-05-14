@@ -70,7 +70,8 @@ class IPLocation extends AdminPortlet
     {
       echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
         'latitude'      => 48.8077,
-        'longitude'     => 9.15362
+        'longitude'     => 9.15362,
+        'options'       => $this->options
       ]);
     }
     else
@@ -78,7 +79,7 @@ class IPLocation extends AdminPortlet
       echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
         'latitude'      => $result->getLatitude(),
         'longitude'     => $result->getLongitude(),
-        'options'       => $this->options,
+        'options'       => $this->options
       ]);
     } 
   }

@@ -35,6 +35,12 @@ $marker = new dosamigos\leaflet\layers\Marker([
 
 $leafLet->addLayer($marker);
 
-echo dosamigos\leaflet\widgets\Map::widget(['leafLet' => $leafLet,'options' => ['style' => 'height: '.$options['height'].'; width: '.$options['width']]]);
+echo dosamigos\leaflet\widgets\Map::widget([
+  'leafLet' => $leafLet,
+  'height'  => $options['height'],
+  'options' => [
+    'style' => 'width: '.$options['width']
+  ]
+]);
 
 ?>
