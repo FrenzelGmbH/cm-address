@@ -29,7 +29,7 @@ $leafLet->installPlugin($makimarkers);
 // generate icon through its icon
 $marker = new dosamigos\leaflet\layers\Marker([
   'latLng' => $center,
-  'icon' => $leafLet->plugins->makimarker->make("info",['color' => "#b0b", 'size' => "m"]),
+  'icon' => $leafLet->plugins->makimarker->make("pitch",['color' => "#b0b", 'size' => "m"]),
   'popupContent' => 'IP Location'
 ]);
 
