@@ -29,7 +29,8 @@ class IPLocation extends AdminPortlet
    * @var [type]
    */
   public $options=[
-    'height' => '400'
+    'height' => '400',
+    'zoom'   => '10'
   ];
   
   /**
