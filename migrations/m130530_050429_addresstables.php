@@ -45,6 +45,7 @@ class m130530_050429_addresstables extends \yii\db\Migration
       // timestamps
       'created_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
       'updated_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
+      'deleted_at'        => Schema::TYPE_INTEGER . ' DEFAULT NULL',
       //Foreign Keys
       'country_id'        => Schema::TYPE_INTEGER,      
     ],$tableOptions);
