@@ -119,4 +119,24 @@ class Address extends \yii\db\ActiveRecord
         
         return parent::beforeSave($insert);
     }
+
+    public static function getIPLocation(){
+        //initialize the browser
+        $adapter = new \Geocoder\HttpAdapter\GuzzleHttpAdapter();
+        
+        //create geocoder
+        $geocoder = new \Geocoder\Geocoder();
+        $geocoder->registerProviders([
+          new \Geocoder\Provider\FreeGeoIpProvider($adapter)
+        ]);
+
+        if (!isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+          $client_ip = $_SERVER['REMOTE_ADDR'];
+        }
+        else {
+          $client_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        return $geocoder->geocode($client_ip);
+    }
 }
