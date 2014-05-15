@@ -26,6 +26,7 @@ use frenzelgmbh\cmaddress\components\GeoLocation;
  * @property integer $system_upate
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $deleted_at
  * @property integer $country_id
  *
  * @property Country $country
@@ -56,7 +57,7 @@ class Address extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'mod_id', 'system_upate', 'created_at', 'updated_at', 'country_id'], 'integer'],
+            [['user_id', 'mod_id', 'system_upate', 'created_at', 'updated_at', 'country_id','deleted_at'], 'integer'],
             // done by timestamp behaviour[['created_at', 'updated_at'], 'required'],
             [['cityName', 'addresslineOne', 'addresslineTwo', 'mod_table', 'system_key', 'system_name'], 'string', 'max' => 100],
             [['zipCode', 'postBox'], 'string', 'max' => 20],

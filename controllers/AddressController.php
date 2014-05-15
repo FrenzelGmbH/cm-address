@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use \DateTime;
+
 /**
  * AddressController implements the CRUD actions for Address model.
  */
@@ -98,7 +100,9 @@ class AddressController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $date = new DateTime('now');
+        $model = $this->findModel($id);
+        $model->deleted_at = $date->format("U");
 
         return $this->redirect(['index']);
     }
