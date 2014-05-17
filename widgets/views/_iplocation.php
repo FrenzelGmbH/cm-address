@@ -34,10 +34,12 @@ $marker = new dosamigos\leaflet\layers\Marker([
 ]);
 
 $leafLet->addLayer($marker);
+$leafLet->appendJs('BlogMap'.str_replace('.', '', $latitude)"._onResize()");
 
 echo dosamigos\leaflet\widgets\Map::widget([
   'leafLet' => $leafLet,
   'height'  => $options['height']
 ]);
+
 
 ?>
