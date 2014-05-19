@@ -15,14 +15,14 @@ class m130530_050429_addresstables extends \yii\db\Migration
 	{
     
     switch (Yii::$app->db->driverName) {
-        case 'mysql':
-            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
-            break;
-        case 'pgsql':
-            $tableOptions = null;
-            break;
-        default:
-            throw new RuntimeException('Your database is not supported!');
+      case 'mysql':
+        $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
+        break;
+      case 'pgsql':
+        $tableOptions = null;
+        break;
+      default:
+        throw new RuntimeException('Your database is not supported!');
     }
 
 		$this->createTable('{{%address}}',[
@@ -54,10 +54,20 @@ class m130530_050429_addresstables extends \yii\db\Migration
     $this->addColumn('{{%address}}','longitude',Schema::TYPE_FLOAT .' DEFAULT 0.00');
 
     $this->createTable('{{%country}}',[
-        'id'            => Schema::TYPE_PK,
-        'iso2'          => Schema::TYPE_STRING .'(2)',
-        'iso3'          => Schema::TYPE_STRING .'(3)',
-        'name'          => Schema::TYPE_STRING .'(100)',
+      'id'                => Schema::TYPE_PK,
+      'iso2'              => Schema::TYPE_STRING .'(2)',
+      'iso3'              => Schema::TYPE_STRING .'(3)',
+      'name'              => Schema::TYPE_STRING .'(100)',
+      //possible reference to user
+      'user_id'           => Schema::TYPE_INTEGER.' NULL',
+      //interface fields
+      'system_key'        => Schema::TYPE_STRING .'(100)',
+      'system_name'       => Schema::TYPE_STRING .'(100)',
+      'system_upate'      => Schema::TYPE_INTEGER.' DEFAULT NULL',
+      // timestamps
+      'created_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
+      'updated_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
+      'deleted_at'        => Schema::TYPE_INTEGER . ' DEFAULT NULL'
     ],$tableOptions);
 
     $this->addForeignKey('fk_address_country', '{{%address}}', 'country_id', '{{%country}}', 'id', 'CASCADE', 'RESTRICT');
