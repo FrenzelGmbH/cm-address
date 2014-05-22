@@ -21,7 +21,7 @@ class Module extends BaseModule {
     /**
      * @var string|null main layout that should be used by default we set it to /main
      */
-    public $mainLayout = '/main';
+    public $mainLayout = 'main';
 
     /**
      * @inheritdoc
