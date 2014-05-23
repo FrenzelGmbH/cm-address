@@ -27,6 +27,16 @@ class Country extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
