@@ -21,7 +21,7 @@ class Module extends BaseModule {
     /**
      * @var string|null main layout that should be used by default we set it to /main
      */
-    public $mainLayout = 'main';
+    public $layout = 'main';
 
     /**
      * @inheritdoc
@@ -40,21 +40,5 @@ class Module extends BaseModule {
         //get the displayed view and register the needed assets
         //as we have no view in this context we need to make the way over the $app->view
         addressAsset::register(\Yii::$app->view);
-    }
-
-    /**
-     * [getMainLayout description]
-     * @return [type] [description]
-     */
-    public function getMainLayout(){
-        return $this->mainLayout;
-    }
-
-    /**
-     * [setMainLayout description]
-     * @return [type] [description]
-     */
-    public function setMainLayout($mainLayout){
-        $this->mainLayout = $mainLayout;
     }
 }
