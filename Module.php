@@ -42,4 +42,19 @@ class Module extends BaseModule {
         addressAsset::register(\Yii::$app->view);
     }
 
+    /**
+     * [getMainLayout description]
+     * @return [type] [description]
+     */
+    public function getMainLayout(){
+        return $this->mainLayout;
+    }
+
+    /**
+     * [setMainLayout description]
+     * @return [type] [description]
+     */
+    public function setMainLayout($mainLayout){
+        $this->mainLayout = $mainLayout;
+    }
 }

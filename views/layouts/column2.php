@@ -1,4 +1,4 @@
-<?php $this->beginContent('@app/views/layouts/'.\frenzelgmbh\cmaddress\Module::mainLayout.'.php'); ?>
+<?php $this->beginContent('@app/views/layouts/'.\frenzelgmbh\cmaddress\Module::getMainLayout().'.php'); ?>
 <div id="content">
   <div class="row">
     <div class="col-md-4">      
