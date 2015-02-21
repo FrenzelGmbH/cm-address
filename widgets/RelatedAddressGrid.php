@@ -7,15 +7,13 @@ use Yii;
 use frenzelgmbh\cmaddress\models\Address;
 use frenzelgmbh\cmaddress\models\AddressSearch;
 
-use frenzelgmbh\appcommon\widgets\Portlet;
-
 /**
  * Related Address Grid
  * @author Philipp Frenzel <philipp@frenzel.net>
  * @copyright Copyright (c) 2014, Frenzel GmbH
  */
 
-class RelatedAddressGrid extends Portlet
+class RelatedAddressGrid extends \yii\bootstrap\Widget
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!

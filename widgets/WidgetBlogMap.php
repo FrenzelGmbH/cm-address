@@ -5,9 +5,8 @@ use Yii;
 use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 use frenzelgmbh\cmaddress\models\WidgetConfig;
-use frenzelgmbh\appcommon\widgets\AdminPortlet;
 
-class WidgetBlogMap extends AdminPortlet
+class WidgetBlogMap extends \yii\bootstrap\Widget
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!

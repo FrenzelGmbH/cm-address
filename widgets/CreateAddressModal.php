@@ -3,7 +3,6 @@
 namespace frenzelgmbh\cmaddress\widgets;
 
 use Yii;
-use frenzelgmbh\appcommon\widgets\Portlet;
 
 /**
  * Create Address Modal Button
@@ -11,7 +10,7 @@ use frenzelgmbh\appcommon\widgets\Portlet;
  * @copyright Copyright (c) 2014, Frenzel GmbH
  */
 
-class CreateAddressModal extends Portlet
+class CreateAddressModal extends \yii\bootstrap\Widget
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!
