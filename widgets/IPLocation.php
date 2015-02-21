@@ -51,7 +51,7 @@ class IPLocation extends \yii\bootstrap\Widget
 
     if($result->getLatitude() == 0)
     {
-      echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
+      return $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
         'latitude'      => 48.8077,
         'longitude'     => 9.15362,
         'options'       => $this->options
@@ -59,7 +59,7 @@ class IPLocation extends \yii\bootstrap\Widget
     }
     else
     {
-      echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
+      return $this->render('@frenzelgmbh/cmaddress/widgets/views/_iplocation',[
         'latitude'      => $result->getLatitude(),
         'longitude'     => $result->getLongitude(),
         'options'       => $this->options

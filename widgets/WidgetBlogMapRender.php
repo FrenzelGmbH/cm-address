@@ -13,26 +13,28 @@ class WidgetBlogMapRender extends \yii\bootstrap\Widget
 	 */
 	const WIDGET_NAME = 'MAPWIDGET';
 	
+	public $renderInPlace = true;
+
 	public $module = 0;	
 	public $id = 0;
 
 	public function init() {
-		parent::init();
 		\frenzelgmbh\cmaddress\sblogAsset::register(\Yii::$app->view);
+		parent::init();
 	}
 
 	protected function renderContent()
 	{
 		$dpLocations = WidgetConfig::findRelatedModels(self::WIDGET_NAME, $this->module, $this->id);
 
-	  if(!is_null($dpLocations))
-	  {
+		if(!is_null($dpLocations))
+		{
 			//here we don't return the view, here we just echo it!
-			echo $this->render('@frenzelgmbh/sblog/widgets/views/_mapwidget_renderer',['dpLocations'=>$dpLocations]);
+			return $this->render('@frenzelgmbh/sblog/widgets/views/_mapwidget_renderer',['dpLocations'=>$dpLocations]);
 		}
 		else
 		{
-			echo "";
+			return "";
 		}
 	}
 
