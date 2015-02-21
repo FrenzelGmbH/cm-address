@@ -18,7 +18,6 @@ class Module extends BaseModule {
      */
     public function init()
     {
-        parent::init();
         $this->setAliases([
             '@cmaddress' => dirname(__FILE__)
         ]);
@@ -30,5 +29,6 @@ class Module extends BaseModule {
         //get the displayed view and register the needed assets
         //as we have no view in this context we need to make the way over the $app->view
         addressAsset::register(\Yii::$app->view);
+        parent::init();        
     }
 }
