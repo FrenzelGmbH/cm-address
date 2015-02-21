@@ -10,7 +10,7 @@ use Yii;
  * @copyright Copyright (c) 2014, Frenzel GmbH
  */
 
-class IPLocation extends \yii\bootstrap\Widget
+class IPLocation extends yii\widgets\Block
 {
   /**
    * const WIDGET_NAME must be defined for all widgets!

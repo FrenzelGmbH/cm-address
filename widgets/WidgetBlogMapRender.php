@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 use frenzelgmbh\cmaddress\models\WidgetConfig;
 
-class WidgetBlogMapRender extends \yii\bootstrap\Widget
+class WidgetBlogMapRender extends yii\widgets\Block
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!
@@ -29,7 +29,6 @@ class WidgetBlogMapRender extends \yii\bootstrap\Widget
 
 		if(!is_null($dpLocations))
 		{
-			//here we don't return the view, here we just echo it!
 			return $this->render('@frenzelgmbh/sblog/widgets/views/_mapwidget_renderer',['dpLocations'=>$dpLocations]);
 		}
 		else

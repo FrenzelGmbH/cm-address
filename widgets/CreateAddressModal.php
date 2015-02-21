@@ -10,7 +10,7 @@ use Yii;
  * @copyright Copyright (c) 2014, Frenzel GmbH
  */
 
-class CreateAddressModal extends \yii\bootstrap\Widget
+class CreateAddressModal extends yii\widgets\Block
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!
@@ -50,7 +50,7 @@ class CreateAddressModal extends \yii\bootstrap\Widget
 	 */
 	protected function renderContent()
 	{
-		echo $this->render('@frenzelgmbh/cmaddress/widgets/views/_create_modal',[
+		return $this->render('@frenzelgmbh/cmaddress/widgets/views/_create_modal',[
 			'module' => $this->module,
 			'id'		 => $this->id
 		]);

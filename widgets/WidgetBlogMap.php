@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 use frenzelgmbh\cmaddress\models\WidgetConfig;
 
-class WidgetBlogMap extends \yii\bootstrap\Widget
+class WidgetBlogMap extends yii\widgets\Block
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!
@@ -28,10 +28,9 @@ class WidgetBlogMap extends \yii\bootstrap\Widget
 		$query = WidgetConfig::findRelatedRecords(self::WIDGET_NAME, $this->module, $this->id);
 
 		$dpLocations = new ActiveDataProvider(array(
-		  'query' => $query,
-	  ));
-		//here we don't return the view, here we just echo it!
-		echo $this->render('@frenzelgmbh/sblog/widgets/views/_mapwidget',['dpLocations'=>$dpLocations,'module'=>$this->module,'id'=>$this->id]);
+		  	'query' => $query,
+	  	));
+		return $this->render('@frenzelgmbh/sblog/widgets/views/_mapwidget',['dpLocations'=>$dpLocations,'module'=>$this->module,'id'=>$this->id]);
 	}
 
 }
