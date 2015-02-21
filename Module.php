@@ -14,16 +14,6 @@ class Module extends BaseModule {
     const VERSION = '0.1.0-dev';
 
     /**
-     * @var string|null View path. Leave as null to use default "@user/views"
-     */
-    public $viewPath;
-
-    /**
-     * @var string|null main layout that should be used by default we set it to /main
-     */
-    public $layout = 'main';
-
-    /**
      * @inheritdoc
      */
     public function init()

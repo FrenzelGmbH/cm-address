@@ -1,9 +1,9 @@
 {
   "name": "frenzelgmbh/cm-address",
-  "description": "Common Address Module for yii2",
+  "description": "Common Address Module",
   "keywords": [
     "yii2",
-    "address module",
+    "address",
     "frenzel gmbh"
   ],
   "type": "yii2-extension",
@@ -21,12 +21,13 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "frenzelgmbh/appcommon":"dev-master",
     "anthonymartin/geo-location":"dev-master",
     "willdurand/geocoder": "dev-master",
     "2amigos/yii2-leaflet-markercluster-plugin": "*",
     "2amigos/yii2-leaflet-extension": "*",
-    "2amigos/yii2-leaflet-makimarker-plugin": "*"
+    "2amigos/yii2-leaflet-makimarker-plugin": "*",
+    "guzzlehttp/guzzle": "*",
+    "egeloen/http-adapter" : "*"
   },
   "autoload": {
     "psr-4": {

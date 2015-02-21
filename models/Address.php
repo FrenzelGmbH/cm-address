@@ -4,7 +4,7 @@ namespace frenzelgmbh\cmaddress\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use frenzelgmbh\cmaddress\components\GeoLocation;
+use AnthonyMartin\GeoLocation\GeoLocation;
 
 /**
  * This is the model class for table "address".
@@ -122,13 +122,10 @@ class Address extends \yii\db\ActiveRecord
 
     public static function getIPLocation(){
         //initialize the browser
-        $adapter = new \Geocoder\HttpAdapter\GuzzleHttpAdapter();
+        $adapter = new GuzzleHttpAdapter();
         
         //create geocoder
-        $geocoder = new \Geocoder\Geocoder();
-        $geocoder->registerProviders([
-          new \Geocoder\Provider\FreeGeoIpProvider($adapter)
-        ]);
+        $geocoder = new \Geocoder\Provider\FreeGeoIp($adapter);
 
         if (!isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
           $client_ip = $_SERVER['REMOTE_ADDR'];
