@@ -13,7 +13,7 @@ use frenzelgmbh\cmaddress\models\AddressSearch;
  * @copyright Copyright (c) 2014, Frenzel GmbH
  */
 
-class RelatedAddressGrid extends yii\widgets\Block
+class RelatedAddressGrid extends \yii\widgets\Block
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!

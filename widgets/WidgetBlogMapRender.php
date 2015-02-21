@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 use frenzelgmbh\cmaddress\models\WidgetConfig;
 
-class WidgetBlogMapRender extends yii\widgets\Block
+class WidgetBlogMapRender extends \yii\widgets\Block
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!
