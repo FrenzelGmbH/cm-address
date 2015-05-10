@@ -13,7 +13,7 @@ use frenzelgmbh\cmaddress\models\AddressSearch;
  * @copyright Copyright (c) 2014, Frenzel GmbH
  */
 
-class RelatedAddressGrid extends \yii\widgets\Block
+class RelatedAddressGrid extends \yii\bootstrap\Widget
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!
@@ -51,15 +51,15 @@ class RelatedAddressGrid extends \yii\widgets\Block
 	 * [renderContent description]
 	 * @return [type] [description]
 	 */
-	protected function renderContent()
+	protected function run()
 	{
 		$searchModel = new AddressSearch;
-    $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(),$this->module,$this->id);
+    	$dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(),$this->module,$this->id);
 
-    return $this->render('@frenzelgmbh/cmaddress/widgets/views/_address_grid', [
-        'dataProvider' => $dataProvider,
-        'searchModel' => $searchModel,
-    ]);
+	    return $this->render('@frenzelgmbh/cmaddress/widgets/views/_address_grid', [
+	        'dataProvider' => $dataProvider,
+	        'searchModel' => $searchModel,
+	    ]);
 	}
 
 }
