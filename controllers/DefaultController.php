@@ -47,7 +47,7 @@ class DefaultController extends Controller
               'jscountry',
               'create'
             ),
-            'roles'=>array('?'),
+            'roles'=>array('@'),
           ]
         ]
       ]
