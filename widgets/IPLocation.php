@@ -10,7 +10,7 @@ use Yii;
  * @copyright Copyright (c) 2014, Frenzel GmbH
  */
 
-class IPLocation extends \yii\widgets\Block
+class IPLocation extends \yii\bootstrap\Widget
 {
   /**
    * const WIDGET_NAME must be defined for all widgets!
@@ -45,7 +45,7 @@ class IPLocation extends \yii\widgets\Block
    * [renderContent description]
    * @return [type] [description]
    */
-  protected function renderContent()
+  public function run()
   {
     $result = \frenzelgmbh\cmaddress\models\Address::getIPLocation();
 

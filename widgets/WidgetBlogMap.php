@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 use frenzelgmbh\cmaddress\models\WidgetConfig;
 
-class WidgetBlogMap extends \yii\widgets\Block
+class WidgetBlogMap extends \yii\bootstrap\Widget
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!
@@ -23,7 +23,7 @@ class WidgetBlogMap extends \yii\widgets\Block
 		\frenzelgmbh\cmaddress\sblogAsset::register(\Yii::$app->view);
 	}
 
-	protected function renderContent()
+	public function run()
 	{
 		$query = WidgetConfig::findRelatedRecords(self::WIDGET_NAME, $this->module, $this->id);
 

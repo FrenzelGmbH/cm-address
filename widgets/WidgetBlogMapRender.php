@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 use frenzelgmbh\cmaddress\models\WidgetConfig;
 
-class WidgetBlogMapRender extends \yii\widgets\Block
+class WidgetBlogMapRender extends \yii\bootstrap\Widget
 {
 	/**
 	 * const WIDGET_NAME must be defined for all widgets!
@@ -23,7 +23,7 @@ class WidgetBlogMapRender extends \yii\widgets\Block
 		parent::init();
 	}
 
-	protected function renderContent()
+	public function run()
 	{
 		$dpLocations = WidgetConfig::findRelatedModels(self::WIDGET_NAME, $this->module, $this->id);
 
