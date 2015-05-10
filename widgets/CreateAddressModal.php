@@ -48,7 +48,7 @@ class CreateAddressModal extends \yii\bootstrap\Widget
 	 * [renderContent description]
 	 * @return [type] [description]
 	 */
-	protected function run()
+	public function run()
 	{
 		return $this->render('@frenzelgmbh/cmaddress/widgets/views/_create_modal',[
 			'module' => $this->module,

@@ -51,7 +51,7 @@ class RelatedAddressGrid extends \yii\bootstrap\Widget
 	 * [renderContent description]
 	 * @return [type] [description]
 	 */
-	protected function run()
+	public function run()
 	{
 		$searchModel = new AddressSearch;
     	$dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(),$this->module,$this->id);
