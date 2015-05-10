@@ -6,12 +6,12 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
 
-use frenzelgmbh\appcommon\controllers\AppController;
+use yii\web\Controller;
 
 use frenzelgmbh\cmaddress\models\Address;
 use frenzelgmbh\cmaddress\models\Country;
 
-class DefaultController extends AppController
+class DefaultController extends Controller
 {
   
   /**
@@ -58,11 +58,10 @@ class DefaultController extends AppController
    * [actionIndex description]
    * @return [type] [description]
    */
-	public function actionIndex()
-	{
-    $this->layout = \frenzelgmbh\appcommon\controllers\AppController::adminlayout;
-		return $this->render('index');
-	}
+  public function actionIndex()
+  {
+    return $this->render('index');
+  }
 
   /**
    * [actionTest description]
@@ -70,7 +69,6 @@ class DefaultController extends AppController
    */
   public function actionTest()
   {
-    $this->layout = \frenzelgmbh\appcommon\controllers\AppController::adminlayout;
     return $this->render('test');
   }
 
