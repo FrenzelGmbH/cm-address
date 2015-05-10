@@ -21,7 +21,7 @@ $('#submitAddressCreate').on('click',function(event){
   {
     type : "POST",
     success: function(data){
-      $('#caddressmod').modal('hide');
+      $('#appModal').modal('hide');
     }
   });
   event.preventDefault();

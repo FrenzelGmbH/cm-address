@@ -6,21 +6,14 @@ use yii\bootstrap\Modal;
 ?>
 
 <?php 
-  
-Modal::begin([
-  'id'=>'caddressmod',
-  'header' => '<i class="fa fa-info"></i>Loading',
-]);
-echo 'pls. wait one moment...';
-Modal::end();
 
 $modalJS = <<<MODALJS
 
 openaddressmod = function(){
     var th=$(this), id=th.attr('id').slice(0);  
-    $('#caddressmod').modal('show');
-    $('#caddressmod div.modal-header').html('Add Address');
-    $('#caddressmod div.modal-body').load(th.attr('href'));
+    $('#appModal').modal('show');
+    $('#appModal div.modal-header').html('Add Address');
+    $('#appModal div.modal-body').load(th.attr('href'));
     return false;
 };
 
