@@ -4,6 +4,7 @@ namespace frenzelgmbh\cmaddress\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\helpers\Json;
 
 use yii\web\Controller;
@@ -27,27 +28,27 @@ class DefaultController extends Controller
           'delete' => ['post'],
         ],
       ],
-      'AccessControl' => [
-        'class' => '\yii\filters\AccessControl',
+      'access' => [
+        'class' => AccessControl::className(),
         'rules' => [
           [
             'allow'=>true,
-            'actions'=>array(
+            'actions'=>[
               'index',
               'test',
               'create',
               'jscountry'
-            ),
-            'roles'=>array('*'),
+            ],
+            'roles'=>['?'],
           ],
           [
             'allow'=>true,
-            'actions'=>array(              
+            'actions'=>[              
               'test',
               'jscountry',
               'create'
-            ),
-            'roles'=>array('@'),
+            ],
+            'roles'=>['@'],
           ]
         ]
       ]
