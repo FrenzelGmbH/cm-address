@@ -65,6 +65,17 @@ class Address extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function scenarios()
+    {
+        return [
+            'create' => ['addresslineOne', 'entity', 'entity_id', 'cityName','zipCode','addresslineTwo'],
+            'update' => ['addresslineOne' ,'cityName','zipCode','addresslineTwo'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
@@ -82,21 +93,21 @@ class Address extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id'             => \Yii::t('cm-address', 'ID'),
-            'cityName'       => \Yii::t('cm-address', 'City'),
-            'zipCode'        => \Yii::t('cm-address', 'Zip Code'),
-            'postBox'        => \Yii::t('cm-address', 'Post Box'),
-            'addresslineOne' => \Yii::t('cm-address', 'Addressline One'),
-            'addresslineTwo' => \Yii::t('cm-address', 'Addressline Two'),
-            'longitude'      => \Yii::t('cm-address', 'Longitude'),
-            'latitude'       => \Yii::t('cm-address', 'Latitude'),
-            'regionName'     => \Yii::t('cm-address', 'Region'),
-            'created_by' => \Yii::t('app', 'Created by'),
-            'updated_by' => \Yii::t('app', 'Updated by'),
-            'created_at' => \Yii::t('app', 'Created at'),
-            'updated_at' => \Yii::t('app', 'Updated at'),
-            'deleted_at' => \Yii::t('app', 'Updated at'),
-            'country_id'     => Yii::t('cm-address', 'Country'),
+            'id'             => \Yii::t('app', 'ID'),
+            'cityName'       => \Yii::t('app', 'City'),
+            'zipCode'        => \Yii::t('app', 'Zip Code'),
+            'postBox'        => \Yii::t('app', 'Post Box'),
+            'addresslineOne' => \Yii::t('app', 'Addressline One'),
+            'addresslineTwo' => \Yii::t('app', 'Addressline Two'),
+            'longitude'      => \Yii::t('app', 'Longitude'),
+            'latitude'       => \Yii::t('app', 'Latitude'),
+            'regionName'     => \Yii::t('app', 'Region'),
+            'created_by'     => \Yii::t('app', 'Created by'),
+            'updated_by'     => \Yii::t('app', 'Updated by'),
+            'created_at'     => \Yii::t('app', 'Created at'),
+            'updated_at'     => \Yii::t('app', 'Updated at'),
+            'deleted_at'     => \Yii::t('app', 'Deleted at'),
+            'country_id'     => \Yii::t('app', 'Country'),
         ];
     }
 
@@ -169,7 +180,7 @@ class Address extends \yii\db\ActiveRecord
             $this->addError($attribute, \Yii::t('net_frenzel_communication', 'ERROR_MSG_INVALID_MODEL_ID'));
         } else {
             $model = $class->name;
-            if ($model::find()->where(['id' => $this->model_id]) === false) {
+            if ($model::find()->where(['id' => $this->entity_id]) === false) {
                 $this->addError($attribute, \Yii::t('net_frenzel_communication', 'ERROR_MSG_INVALID_MODEL_ID'));
             }
         }
