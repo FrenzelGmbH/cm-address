@@ -1,6 +1,6 @@
 <?php
 
-namespace frenzelgmbh\cmaddress\models;
+namespace net\frenzel\address\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -38,7 +38,7 @@ class Address extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%address}}';
+        return '{{%net_frenzel_address}}';
     }
 
     /**
@@ -80,12 +80,6 @@ class Address extends \yii\db\ActiveRecord
             'longitude'      => Yii::t('cm-address', 'Longitude'),
             'latitude'       => Yii::t('cm-address', 'Latitude'),
             'regionName'     => Yii::t('cm-address', 'Region'),
-            'user_id'        => Yii::t('cm-address', 'User'),
-            'mod_table'      => Yii::t('cm-address', 'Mod Table'),
-            'mod_id'         => Yii::t('cm-address', 'Mod ID'),
-            'system_key'     => Yii::t('cm-address', 'System Key'),
-            'system_name'    => Yii::t('cm-address', 'System Name'),
-            'system_upate'   => Yii::t('cm-address', 'System Upate'),
             'created_at'     => Yii::t('cm-address', 'Created At'),
             'updated_at'     => Yii::t('cm-address', 'Updated At'),
             'country_id'     => Yii::t('cm-address', 'Country ID'),

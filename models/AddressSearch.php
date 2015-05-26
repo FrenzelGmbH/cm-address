@@ -1,6 +1,6 @@
 <?php
 
-namespace frenzelgmbh\cmaddress\models;
+namespace net\frenzel\address\models;
 
 use Yii;
 use yii\base\Model;

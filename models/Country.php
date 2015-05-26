@@ -1,6 +1,6 @@
 <?php
 
-namespace frenzelgmbh\cmaddress\models;
+namespace net\frenzel\address\models;
 
 use Yii;
 
@@ -21,7 +21,7 @@ class Country extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%country}}';
+        return '{{%net_frenzel_country}}';
     }
 
     /**
