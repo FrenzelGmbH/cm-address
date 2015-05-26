@@ -9,7 +9,7 @@
 
 use yii\db\Schema;
 
-class m130530_050429_addresstables extends \yii\db\Migration
+class m150530_050429_addresstables extends \yii\db\Migration
 {
 	public function up()
 	{
