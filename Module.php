@@ -1,34 +1,36 @@
 <?php
 
-namespace frenzelgmbh\cmaddress;
+namespace net\frenzel\address;
 
 use yii\base\Module as BaseModule;
 
 /**
- * Smart Weblog Module for Yii2
- *
- * @author Philipp frenzel <philipp@frenzel.net>
+ * @author Philipp Frenzel <philipp@frenzel.net> 
  */
-class Module extends BaseModule {
 
+class Module extends \yii\base\Module
+{
+    /**
+     * @inheritdoc
+     */
+    public static $name = 'address';
+
+    /**
+     * version
+     */
     const VERSION = '0.1.0-dev';
+
+    /** @var string|null */
+    public $userIdentityClass = null;
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        $this->setAliases([
-            '@cmaddress' => dirname(__FILE__)
-        ]);
-        \Yii::$app->i18n->translations['cm-address'] = [
-            'class' => 'yii\i18n\PhpMessageSource',
-            'sourceLanguage' => 'en-US',
-            'basePath' => '@frenzelgmbh/cmaddress/messages',
-        ];
-        //get the displayed view and register the needed assets
-        //as we have no view in this context we need to make the way over the $app->view
-        addressAsset::register(\Yii::$app->view);
-        parent::init();        
+        parent::init();
+        if ($this->userIdentityClass === null) {
+            $this->userIdentityClass = \Yii::$app->getUser()->identityClass;
+        }
     }
 }

@@ -20,7 +20,7 @@ Inside your yii-config, pls. add the following lines to your modules section. As
 might see, the gridview needs to be implemented too.
 ```
 'address'=>[
-  'class' => 'frenzelgmbh\cmaddress\Module',
+  'class' => 'net\frenzel\address\Module',
 ],
 'gridview' =>  [
   'class' => '\kartik\grid\Module'
@@ -52,8 +52,8 @@ Widgets
 
 The "create"-Button:
 ```php
-if(class_exists('\frenzelgmbh\cmaddress\widgets\CreateAddressModal')){
-  echo \frenzelgmbh\cmaddress\widgets\CreateAddressModal::widget(array(
+if(class_exists('net\frenzel\address\widgets\CreateAddressModal')){
+  echo net\frenzel\address\widgets\CreateAddressModal::widget(array(
     'module'      => 'tbl_test',
     'id'          => 1
   )); 
@@ -62,8 +62,8 @@ if(class_exists('\frenzelgmbh\cmaddress\widgets\CreateAddressModal')){
 
 The "related"-Grid:
 ```php
-if(class_exists('\frenzelgmbh\cmaddress\widgets\RelatedAddressGrid')){
-  echo \frenzelgmbh\cmaddress\widgets\RelatedAddressGrid::widget(array(
+if(class_exists('net\frenzel\address\widgets\RelatedAddressGrid')){
+  echo net\frenzel\address\widgets\RelatedAddressGrid::widget(array(
     'module'      => 'tbl_test',
     'id'          => 1
   )); 
@@ -72,7 +72,7 @@ if(class_exists('\frenzelgmbh\cmaddress\widgets\RelatedAddressGrid')){
 
 Visitors IP Location:
 ```php
-if(class_exists('\frenzelgmbh\cmaddress\widgets\IPLocation')){
-  echo \frenzelgmbh\cmaddress\widgets\IPLocation::widget(); 
+if(class_exists('net\frenzel\address\widgets\IPLocation')){
+  echo net\frenzel\address\widgets\IPLocation::widget(); 
 }
 ```

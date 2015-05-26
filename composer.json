@@ -1,13 +1,13 @@
 {
   "name": "frenzelgmbh/cm-address",
-  "description": "Common Address Module",
+  "description": "Common Address Module for yii2",
   "keywords": [
     "yii2",
     "address",
     "frenzel gmbh"
   ],
   "type": "yii2-extension",
-  "license": "GPL v2",
+  "license": "MIT",
   "support": {
     "issues": "https://github.com/frenzelgmbh/cm-address/issues?state=open",
     "source": "https://github.com/frenzelgmbh/cm-address"
@@ -19,7 +19,7 @@
       "homepage": "http://frenzel.net"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "require": {
     "anthonymartin/geo-location":"dev-master",
     "willdurand/geocoder": "dev-master",
@@ -31,7 +31,7 @@
   },
   "autoload": {
     "psr-4": {
-      "frenzelgmbh\\cmaddress\\": ""
+      "net\\frenzel\\address\\": ""
     }
   }
 }
