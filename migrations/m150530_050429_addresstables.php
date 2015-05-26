@@ -187,12 +187,12 @@ class m150530_050429_addresstables extends \yii\db\Migration
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'KZ', 'name' => 'Kazakhstan']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'KE', 'name' => 'Kenya']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'KI', 'name' => 'Kiribati']);
-    $this->insert('{{%net_frenzel_country}}',['iso2' => 'KP', 'name' => 'Korea, Democratic People''s Republic of']);
+    $this->insert('{{%net_frenzel_country}}',['iso2' => 'KP', 'name' => 'Korea, Democratic Peoples Republic of']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'KR', 'name' => 'Korea, Republic of']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'XK', 'name' => 'Kosovo']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'KW', 'name' => 'Kuwait']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'KG', 'name' => 'Kyrgyzstan']);
-    $this->insert('{{%net_frenzel_country}}',['iso2' => 'LA', 'name' => 'Lao People''s Democratic Republic']);
+    $this->insert('{{%net_frenzel_country}}',['iso2' => 'LA', 'name' => 'Lao Peoples Democratic Republic']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'LV', 'name' => 'Latvia']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'LB', 'name' => 'Lebanon']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'LS', 'name' => 'Lesotho']);
