@@ -318,16 +318,16 @@ class m150530_050429_addresstables extends \yii\db\Migration
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'ZM', 'name' => 'Zambia']);
     $this->insert('{{%net_frenzel_country}}',['iso2' => 'ZW', 'name' => 'Zimbabwe']);
 
-    $this->addForeignKey('fk_address_country', '{{%net_frenzel_address}}', 'country_id', '{{%net_frenzel_country}}', 'id', 'CASCADE', 'RESTRICT');
+    $this->addForeignKey('fk_net_frenzel_address_net_frenzel_country', '{{%net_frenzel_address}}', 'country_id', '{{%net_frenzel_country}}', 'id', 'CASCADE', 'RESTRICT');
 
 	}
 
 	public function down()
 	{
 		//drop FK's first
-    $this->dropForeignKey('fk_address_country', '{{%net_frenzel_address}}');
+        $this->dropForeignKey('fk_net_frenzel_address_net_frenzel_country', '{{%net_frenzel_address}}');
 
 		$this->dropTable('{{%net_frenzel_address}}');
-    $this->dropTable('{{%net_frenzel_country}}');
+        $this->dropTable('{{%net_frenzel_country}}');
 	}
 }
