@@ -88,7 +88,7 @@ $this->registerJs($script);
 
 <?= Html::activeHiddenInput($model, 'entity') ?>
 <?= Html::activeHiddenInput($model, 'entity_id') ?>
-<?= Html::endForm(); ?>
+<?php ActiveForm::end(); ?>
 
     </div>
 </div>
