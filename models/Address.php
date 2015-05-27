@@ -37,7 +37,7 @@ class Address extends \yii\db\ActiveRecord
     CONST TYPE_POST = 1;
     CONST TYPE_INVOICE = 2;
 
-    public $addressTypes = [
+    public static $addressTypes = [
         self::TYPE_POST => 'POST',
         self::TYPE_INVOICE => 'INVOICE',
     ];
@@ -153,10 +153,10 @@ class Address extends \yii\db\ActiveRecord
      */
     public function beforeSave($insert)
     {
-        //geolocating
         if($this->isMain == 1)
         {
-            self::updateAll(['isMain' => 0],['entity' => $this->entity, 'entity_id' => $this->entity_id, ['<>', 'id', $this->id]]);
+            self::updateAll(['isMain' => 0],['entity' => $this->entity, 'entity_id' => $this->entity_id]);
+            $this->isMain = 1;
         }
         $location = $this->addresslineOne . ' ,' . $this->cityName;
         $response = GeoLocation::getGeocodeFromGoogle($location);
@@ -204,6 +204,29 @@ class Address extends \yii\db\ActiveRecord
             if ($model::find()->where(['id' => $this->entity_id]) === false) {
                 $this->addError($attribute, \Yii::t('net_frenzel_communication', 'ERROR_MSG_INVALID_MODEL_ID'));
             }
+        }
+    }
+
+    public function getAdressHTML()
+    {
+        $html = '';
+        if($this->isMain == true)
+        {
+          $html .= '<p class="text-primary">';
+        }
+        $html .= '<i class="fa fa-map-marker"></i>';
+        switch($this->type)
+        {
+          case self::TYPE_POST:
+            $html .= '<i class="fa fa-truck"></i>';
+            break;
+          default:
+            $html .= '<i class="fa fa-credit-card"></i>';
+        }
+        $html .= $model->addresslineOne .', '. $model->zipCode . ' ' . $model->cityName;
+        if($this->isMain == true)
+        {
+          $html .= '</p>';
         }
     }
 

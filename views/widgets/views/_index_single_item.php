@@ -16,9 +16,8 @@ use yii\helpers\Url;
                 <div class="col-sm-8">
                 <?php if (!is_null($model->deleted_at)) { ?>
                     <div style="color:red">
-                <?php } ?>
-                    <i class="fa fa-map-marker"></i> 
-                    <?= $model->addresslineOne; ?>, <?= $model->zipCode; ?> <?= $model->cityName; ?>
+                <?php } ?>                    
+                    <?= $model->addressHTML; ?>
                 <?php if (!is_null($model->deleted_at)) { ?>
                     </div>
                 <?php } ?>
