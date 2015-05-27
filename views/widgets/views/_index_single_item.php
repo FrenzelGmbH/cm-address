@@ -17,7 +17,7 @@ use yii\helpers\Url;
                 <?php if (!is_null($model->deleted_at)) { ?>
                     <div style="color:red">
                 <?php } ?>                    
-                    <?= $model->addressHTML; ?>
+                    <?= $model->AddressHTML; ?>
                 <?php if (!is_null($model->deleted_at)) { ?>
                     </div>
                 <?php } ?>

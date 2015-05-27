@@ -207,7 +207,7 @@ class Address extends \yii\db\ActiveRecord
         }
     }
 
-    public function getAdressHTML()
+    public function getAddressHTML()
     {
         $html = '';
         if($this->isMain == true)
