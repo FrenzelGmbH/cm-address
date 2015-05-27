@@ -37,4 +37,16 @@ class AddressQuery extends ActiveQuery
         return $this;
     }
 
+    /**
+     * find all records which are related to the same entity
+     * @param  [type] $entity [description]
+     * @param  [type] $enity  [description]
+     * @return [type]         [description]
+     */
+    public function related($entity = NULL, $enity = )
+    {
+        $this->andWhere(['entity' => $entity, 'entity_id' => $this->entity_id]);
+        return $this;
+    }
+
 }

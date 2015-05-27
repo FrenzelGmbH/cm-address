@@ -1,11 +1,11 @@
 <?php
 
-namespace frenzelgmbh\cmaddress\widgets;
+namespace net\frenzel\address\widgets;
 
 use Yii;
 
-use frenzelgmbh\cmaddress\models\Address;
-use frenzelgmbh\cmaddress\models\AddressSearch;
+use net\frenzel\address\models\Address;
+use net\frenzel\address\models\AddressSearch;
 
 /**
  * Related Address Grid
@@ -30,13 +30,13 @@ class RelatedAddressGrid extends \yii\bootstrap\Widget
 	 * [$module description]
 	 * @var string the module, mostly we recommend to take the table name in which records will be stored
 	 */
-	public $module = NULL;
+	public $entity = NULL;
 
 	/**
 	 * [$id description]
 	 * @var integer id that is the primarey key value of the reference value
 	 */
-	public $id = NULL;
+	public $entity_id = NULL;
 
 	/**
 	 * [init description]
