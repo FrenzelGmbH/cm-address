@@ -20,10 +20,10 @@ use AnthonyMartin\GeoLocation\GeoLocation;
  * @property float $latitude
  * @property string $regionName
  * @property integer $user_id
- * @property string $mod_table
- * @property integer $mod_id
- * @property string $system_key
- * @property string $system_name
+ * @property string $entity
+ * @property integer $entity_id
+ * @property integer $isMain
+ * @property integer $type
  * @property integer $system_upate
  * @property integer $created_at
  * @property integer $updated_at
@@ -68,8 +68,8 @@ class Address extends \yii\db\ActiveRecord
     public function scenarios()
     {
         return [
-            'create' => ['addresslineOne', 'entity', 'entity_id', 'cityName','zipCode','addresslineTwo'],
-            'update' => ['addresslineOne' ,'cityName','zipCode','addresslineTwo'],
+            'create' => ['addresslineOne', 'entity', 'entity_id', 'cityName','zipCode','addresslineTwo','type','isMain'],
+            'update' => ['addresslineOne' ,'cityName','zipCode','addresslineTwo','type','isMain'],
         ];
     }
 
@@ -79,7 +79,7 @@ class Address extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['entity_id', 'created_at', 'updated_at', 'country_id','deleted_at'], 'integer'],
+            [['entity_id', 'created_at', 'updated_at', 'country_id','deleted_at','type','isMain'], 'integer'],
             [['cityName', 'addresslineOne', 'addresslineTwo', 'entity','updated_by', 'created_by'], 'string', 'max' => 100],
             [['zipCode', 'postBox'], 'string', 'max' => 20],
             [['regionName'], 'string', 'max' => 50],
@@ -133,10 +133,11 @@ class Address extends \yii\db\ActiveRecord
      */
     public function beforeSave($insert)
     {
-        if ($insert) {
-            //get the geo location information
-        }
         //geolocating
+        if($this->isMain == 1)
+        {
+            self::updateAll(['isMain' => 0],['entity' => $this->entity, 'entity_id' => $this->entity_id, ['<>', 'id', $this->id]]);
+        }
         $location = $this->addresslineOne . ' ,' . $this->cityName;
         $response = GeoLocation::getGeocodeFromGoogle($location);
         if(array_key_exists(0, $response->results))
