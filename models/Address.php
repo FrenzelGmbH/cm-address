@@ -214,20 +214,21 @@ class Address extends \yii\db\ActiveRecord
         {
           $html .= '<p class="text-primary">';
         }
-        $html .= '<i class="fa fa-map-marker"></i>';
+        $html .= '<i class="fa fa-map-marker"></i> ';
         switch($this->type)
         {
           case self::TYPE_POST:
-            $html .= '<i class="fa fa-truck"></i>';
+            $html .= '<i class="fa fa-truck"></i> ';
             break;
           default:
-            $html .= '<i class="fa fa-credit-card"></i>';
+            $html .= '<i class="fa fa-credit-card"></i> ';
         }
-        $html .= $model->addresslineOne .', '. $model->zipCode . ' ' . $model->cityName;
+        $html .= $this->addresslineOne .', '. $this->zipCode . ' ' . $this->cityName;
         if($this->isMain == true)
         {
           $html .= '</p>';
         }
+        return $html;
     }
 
     /**
