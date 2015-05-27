@@ -19,7 +19,7 @@
       "homepage": "http://frenzel.net"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "require": {
     "anthonymartin/geo-location":"dev-master",
     "willdurand/geocoder": "dev-master",
