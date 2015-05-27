@@ -27,7 +27,8 @@
     "2amigos/yii2-leaflet-extension": "*",
     "2amigos/yii2-leaflet-makimarker-plugin": "*",
     "guzzlehttp/guzzle": "*",
-    "egeloen/http-adapter" : "*"
+    "egeloen/http-adapter" : "*",
+    "rmrevin/yii2-fontawesome": "2.*"
   },
   "autoload": {
     "psr-4": {
