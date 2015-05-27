@@ -43,7 +43,7 @@ class AddressQuery extends ActiveQuery
      * @param  [type] $enity  [description]
      * @return [type]         [description]
      */
-    public function related($entity = NULL, $enity = )
+    public function related($entity = NULL, $enity = NULL)
     {
         $this->andWhere(['entity' => $entity, 'entity_id' => $this->entity_id]);
         return $this;
