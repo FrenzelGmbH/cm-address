@@ -27,4 +27,14 @@ class AddressQuery extends ActiveQuery
         return $this;
     }
 
+    /**
+     * will return the main address record
+     * @return boolean [description]
+     */
+    public function isMain()
+    {
+        $this->andWhere(['isMain' => 1]);
+        return $this;
+    }
+
 }

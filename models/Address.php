@@ -34,6 +34,26 @@ use AnthonyMartin\GeoLocation\GeoLocation;
  */
 class Address extends \yii\db\ActiveRecord
 {
+    CONST TYPE_POST = 1;
+    CONST TYPE_INVOICE = 2;
+
+    public $addressTypes = [
+        self::TYPE_POST => 'POST',
+        self::TYPE_INVOICE => 'INVOICE',
+    ];
+
+    public static function getTypeArray()
+    {
+        return self::$addressTypes;
+    }
+    
+    public function getTypeAsString()
+    {
+        if(isset(self::$addressTypes[$this->type]))
+            return self::$addressTypes[$this->type];
+        return 'UNKNOWN! Pls. contact sysadmin ...';
+    }
+
     /**
      * @inheritdoc
      * @return MandantenQuery
