@@ -3,16 +3,13 @@
 //initialise all waypoints
 $mycenter = 0;
 $locations = array();
-foreach($dpLocations AS $location){
-  foreach($location->party->addresses AS $address)
-  {
-    if($mycenter == 0)
+foreach($dpLocations AS $address){
+  if($mycenter == 0)
     {
-      $center = new dosamigos\leaflet\types\LatLng(['lat' => $address->no_latitude, 'lng' => $address->no_longitude]);
+      $center = new dosamigos\leaflet\types\LatLng(['lat' => $address->latitude, 'lng' => $address->longitude]);
     }
-    $locations[$location->party->organisationName] = new dosamigos\leaflet\types\LatLng(['lat' => $address->no_latitude, 'lng' => $address->no_longitude]);
+    $locations[$address->id] = new dosamigos\leaflet\types\LatLng(['lat' => $address->latitude, 'lng' => $address->longitude]);
     $mycenter++;  
-  }
 }
 
 if($mycenter>0)
@@ -21,7 +18,7 @@ if($mycenter>0)
   $layer = new dosamigos\leaflet\layers\TileLayer([
        //'urlTemplate' => 'http://{s}.tile.cloudmade.com/c78ff4e5762545188f82a9a4cd552d54/997/256/{z}/{x}/{y}.png',
        'urlTemplate' => 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-       'map' => 'BlogMap'.$location->param2_int,
+       'map' => 'BlogMap'.$model->id,
        'clientOptions' =>[
           'attribution' => 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
        ]
@@ -31,7 +28,7 @@ if($mycenter>0)
     'center' => $center,
     'zoom' => 13,
     'TileLayer' => $layer,
-    'name' => 'BlogMap'.$location->param2_int
+    'name' => 'BlogMap'.$model->id
   ]);
 
   // Initialize plugin
