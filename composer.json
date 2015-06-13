@@ -22,6 +22,7 @@
   "minimum-stability": "dev",
   "require": {
     "anthonymartin/geo-location":"dev-master",
+    "willdurand/geocoder": "dev-master",
     "2amigos/yii2-leaflet-markercluster-plugin": "*",
     "2amigos/yii2-leaflet-extension": "*",
     "2amigos/yii2-leaflet-makimarker-plugin": "*",
