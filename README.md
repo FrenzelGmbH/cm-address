@@ -1,7 +1,7 @@
 cm-address
 ==========
 
-Common Address Module (Frenzel GmbH 2014) v.0.1
+Common Address Module (Frenzel GmbH 2015) v.0.2
 
 Installation
 ============
@@ -9,11 +9,11 @@ Installation
 Add the following line to your composer.json require section:
 
 ```
-"frenzelgmbh/cmaddress":"*"
+"frenzelgmbh/cm-address":"*",
 ```
 
 ```
-php yii migrate --migrationPath=@vendor/frenzelgmbh/cmaddress/migrations
+php yii migrate --migrationPath=@vendor/frenzelgmbh/cm-address/migrations
 ```
 
 Inside your yii-config, pls. add the following lines to your modules section. As you
@@ -21,15 +21,9 @@ might see, the gridview needs to be implemented too.
 ```
 'address'=>[
   'class' => 'net\frenzel\address\Module',
-],
-'gridview' =>  [
-  'class' => '\kartik\grid\Module'
+  'userIdentityClass' => 'app\models\User', //points to your user identity class
 ],
 ```
-
-After this, you should be able to see the set of build in widgets and options under:
-
-http://yourhost/index.php?r=address/default/test
 
 Design
 ======
@@ -37,8 +31,10 @@ Design
 The Address module is use to store address/location informations, that can be linked to any other "module".
 So in general all modules are referenced by:
 
-* mod_table (which should hold the table name VARCHAR(100))
-* mod_id    (which should hold the primarey key of the referenced record INTEGER(11))
+* entity (which should hold the table name VARCHAR(100))
+* entity_id (which should hold the primarey key of the referenced record INTEGER(11))
+
+Works by passing over the model to the widget!
 
 Geolocation
 ===========
@@ -46,33 +42,17 @@ Geolocation
 The module tries to enrich each passed over address with the latitude and longitude, which will be looked
 up by combining street, address and state information.
 
-
 Widgets
 =======
 
-The "create"-Button:
+Address Management Widget:
+
 ```php
-if(class_exists('net\frenzel\address\widgets\CreateAddressModal')){
-  echo net\frenzel\address\widgets\CreateAddressModal::widget(array(
-    'module'      => 'tbl_test',
-    'id'          => 1
-  )); 
-}
+<?= \net\frenzel\address\views\widgets\Addresses::widget(['model'=> $model]) ?>
 ```
 
-The "related"-Grid:
-```php
-if(class_exists('net\frenzel\address\widgets\RelatedAddressGrid')){
-  echo net\frenzel\address\widgets\RelatedAddressGrid::widget(array(
-    'module'      => 'tbl_test',
-    'id'          => 1
-  )); 
-}
-```
+Renders a Map with all related address points related to the model:
 
-Visitors IP Location:
 ```php
-if(class_exists('net\frenzel\address\widgets\IPLocation')){
-  echo net\frenzel\address\widgets\IPLocation::widget(); 
-}
+<?= \net\frenzel\address\views\widgets\MapWidget::widget(['model'=> $model]) ?>
 ```
