@@ -22,12 +22,12 @@
   "minimum-stability": "dev",
   "require": {
     "anthonymartin/geo-location":"~1.0.0",
-    "willdurand/geocoder": "~3.0.0",
+    "willdurand/geocoder": "~3.1.0",
     "2amigos/yii2-leaflet-markercluster-plugin": "*",
     "2amigos/yii2-leaflet-extension": "*",
     "2amigos/yii2-leaflet-makimarker-plugin": "*",
     "guzzlehttp/guzzle": "*",
-    "egeloen/http-adapter" : "*",
+    "egeloen/http-adapter" : "~0.8.*",
     "rmrevin/yii2-fontawesome": "*"
   },
   "autoload": {
