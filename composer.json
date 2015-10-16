@@ -28,6 +28,7 @@
     "2amigos/yii2-leaflet-makimarker-plugin" : "dev-master",
     "guzzlehttp/guzzle": "*",
     "egeloen/http-adapter" : "*",
+    "egeloen/google-map" : "dev-master",
     "rmrevin/yii2-fontawesome": "*"
   },
   "autoload": {
