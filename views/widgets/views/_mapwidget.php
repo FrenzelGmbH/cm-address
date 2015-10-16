@@ -4,6 +4,9 @@
 $mycenter = 0;
 $locations = array();
 foreach($dpLocations AS $address){
+    if($address->latitude == '')
+        $address->save();
+
   if($mycenter == 0)
     {
       $center = new dosamigos\leaflet\types\LatLng(['lat' => $address->latitude, 'lng' => $address->longitude]);
