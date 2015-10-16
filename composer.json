@@ -24,8 +24,8 @@
     "anthonymartin/geo-location":"~1.0.0",
     "willdurand/geocoder": "~3.1.0",
     "2amigos/yii2-leaflet-markercluster-plugin": "*",
-    "2amigos/yii2-leaflet-extension": "*",
-    "2amigos/yii2-leaflet-makimarker-plugin": "*",
+    "2amigos/yii2-leaflet-extension": "dev-master",
+    "2amigos/yii2-leaflet-makimarker-plugin" : "dev-master",
     "guzzlehttp/guzzle": "*",
     "egeloen/http-adapter" : "*",
     "rmrevin/yii2-fontawesome": "*"
