@@ -89,6 +89,7 @@ class Address extends \yii\db\ActiveRecord
     {
         return [
             'create' => ['addresslineOne', 'entity', 'entity_id', 'cityName','zipCode','addresslineTwo','type','isMain'],
+            'default' => ['addresslineOne', 'entity', 'entity_id', 'cityName','zipCode','addresslineTwo','type','isMain'],
             'update' => ['addresslineOne' ,'cityName','zipCode','addresslineTwo','type','isMain'],
         ];
     }
