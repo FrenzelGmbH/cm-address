@@ -5,7 +5,7 @@ namespace net\frenzel\address\models;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
-use JeroenDesloovere\Geolocation;
+use JeroenDesloovere\Geolocation\Geolocation;
 
 /**
  * This is the model class for table "address".
