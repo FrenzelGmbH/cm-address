@@ -5,7 +5,7 @@ namespace net\frenzel\address\models;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
-use AnthonyMartin\GeoLocation\GeoLocation;
+use JeroenDesloovere\Geolocation;
 
 /**
  * This is the model class for table "address".
@@ -159,12 +159,18 @@ class Address extends \yii\db\ActiveRecord
             self::updateAll(['isMain' => 0],['entity' => $this->entity, 'entity_id' => $this->entity_id]);
             $this->isMain = 1;
         }
-        $location = $this->addresslineOne . ' ,' . $this->cityName;
-        $response = GeoLocation::getGeocodeFromGoogle($location);
-        if(array_key_exists(0, $response->results))
+        $location =  . ' ,' . ;
+        $response = Geolocation::getCoordinates(
+            $this->addresslineOne,
+            '',
+            $this->cityName,
+            $this->zipCode,
+            $this->country
+        );
+        if(array_key_exists('latitude', $response))
         {
-            $this->latitude = $response->results[0]->geometry->location->lat;
-            $this->longitude = $response->results[0]->geometry->location->lng;
+            $this->latitude = $response['latitude'];
+            $this->longitude = $response['longitude'];
         }
         
         return parent::beforeSave($insert);
