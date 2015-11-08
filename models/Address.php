@@ -234,7 +234,7 @@ class Address extends \yii\db\ActiveRecord
 
     /**
      * find the use location based upon his current IP address
-     * @return [type] [description]
+     * @return mixed [description]
      */
     public static function getIPLocation(){
         //initialize the browser
