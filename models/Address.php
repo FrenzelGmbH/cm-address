@@ -167,7 +167,7 @@ class Address extends \yii\db\ActiveRecord
                 NULL,
                 $this->cityName,
                 $this->zipCode,
-                $this->country
+                NULL
             );
             if(array_key_exists('latitude', $response))
             {
