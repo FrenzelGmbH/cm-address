@@ -88,7 +88,7 @@ $this->registerJs($script);
         ); ?>     
 
 
-<div class="clear-fix"></div>
+<div class="clearfix"></div>
 
 <div id="net-address-create-c" class="pull-right"><small>x <?= \Yii::t('net_frenzel_address','close'); ?></small></div>
 

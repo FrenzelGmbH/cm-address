@@ -2,6 +2,7 @@
 
 namespace net\frenzel\address\models;
 
+use yii\base\Exception;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
@@ -159,17 +160,24 @@ class Address extends \yii\db\ActiveRecord
             self::updateAll(['isMain' => 0],['entity' => $this->entity, 'entity_id' => $this->entity_id]);
             $this->isMain = 1;
         }
-        $response = Geolocation::getCoordinates(
-            $this->addresslineOne,
-            '',
-            $this->cityName,
-            $this->zipCode,
-            $this->country
-        );
-        if(array_key_exists('latitude', $response))
+        try{
+            $geolocation = new Geolocation();
+            $response = $geolocation->getCoordinates(
+                $this->addresslineOne,
+                NULL,
+                $this->cityName,
+                $this->zipCode,
+                $this->country
+            );
+            if(array_key_exists('latitude', $response))
+            {
+                $this->latitude = $response['latitude'];
+                $this->longitude = $response['longitude'];
+            }
+        }
+        catch(Exception $e)
         {
-            $this->latitude = $response['latitude'];
-            $this->longitude = $response['longitude'];
+            echo $e->getMessage();
         }
         
         return parent::beforeSave($insert);
