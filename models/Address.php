@@ -159,7 +159,6 @@ class Address extends \yii\db\ActiveRecord
             self::updateAll(['isMain' => 0],['entity' => $this->entity, 'entity_id' => $this->entity_id]);
             $this->isMain = 1;
         }
-        $location =  . ' ,' . ;
         $response = Geolocation::getCoordinates(
             $this->addresslineOne,
             '',
