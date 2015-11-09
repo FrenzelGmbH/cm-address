@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
 use Ivory\HttpAdapter\CurlHttpAdapter;
-use Geocoder\Provider\OpenStreetMap;
+use Geocoder\Provider\GoogleMaps;
 
 /**
  * This is the model class for table "address".
@@ -163,9 +163,9 @@ class Address extends \yii\db\ActiveRecord
         }
         try{
             $curl = new CurlHttpAdapter();
-            $geolocation = new OpenStreetMap($curl);
+            $geolocation = new GoogleMaps($curl);
             $address = $geolocation->geocode($this->addresslineOne . ', ' . $this->cityName)->limit(1);
-            
+
             if($address->getLatitude()!='')
             {
                 $this->latitude = $address->getLatitude();
