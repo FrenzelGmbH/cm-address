@@ -6,8 +6,8 @@ use yii\base\Exception;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
-use Ivory\HttpAdapter\Guzzle6HttpAdapter;
-use Geocoder\Provider\MapQuest;
+use Ivory\HttpAdapter\CurlHttpAdapter;
+use Geocoder\Provider\OpenStreetMap;
 
 /**
  * This is the model class for table "address".
@@ -162,10 +162,10 @@ class Address extends \yii\db\ActiveRecord
             $this->isMain = 1;
         }
         try{
-            $curl = new Guzzle6HttpAdapter();
-            $geolocation = new MapQuest($curl,'lraf41NMzwfaPvNeJVwTEpoOIUeDGxpo');
+            $curl = new CurlHttpAdapter();
+            $geolocation = new OpenStreetMap($curl);
             $address = $geolocation->geocode($this->addresslineOne . ', ' . $this->cityName)->limit(1);
-
+            
             if($address->getLatitude()!='')
             {
                 $this->latitude = $address->getLatitude();
