@@ -22,7 +22,6 @@
   "minimum-stability": "dev",
   "require": {
     "anthonymartin/geo-location":"~1.0.0",
-    "jeroendesloovere/geolocation-php-api": "1.3.*",
     "willdurand/geocoder": "~3.1.0",
     "2amigos/yii2-leaflet-markercluster-plugin": "*",
     "2amigos/yii2-leaflet-extension": "*",

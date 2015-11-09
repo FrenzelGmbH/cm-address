@@ -6,7 +6,8 @@ use yii\base\Exception;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
-use JeroenDesloovere\Geolocation\Geolocation;
+use Ivory\HttpAdapter\CurlHttpAdapter;
+use Geocoder\Provider\GoogleMaps;
 
 /**
  * This is the model class for table "address".
@@ -161,18 +162,14 @@ class Address extends \yii\db\ActiveRecord
             $this->isMain = 1;
         }
         try{
-            $geolocation = new Geolocation();
-            $response = $geolocation->getCoordinates(
-                $this->addresslineOne,
-                NULL,
-                $this->cityName,
-                $this->zipCode,
-                NULL
-            );
-            if(array_key_exists('latitude', $response))
+            $curl = new CurlHttpAdapter();
+            $geolocation = new GoogleMaps($curl);
+            $geolocation->geocode($this->addresslineOne . ', ' . $this->cityName);
+
+            if($geolocation->getLatitude()!='')
             {
-                $this->latitude = $response['latitude'];
-                $this->longitude = $response['longitude'];
+                $this->latitude = $geolocation->getLatitude();
+                $this->longitude = $geolocation->getLongitude();
             }
         }
         catch(Exception $e)
