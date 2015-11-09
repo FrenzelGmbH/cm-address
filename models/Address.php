@@ -164,7 +164,8 @@ class Address extends \yii\db\ActiveRecord
         try{
             $curl = new CurlHttpAdapter();
             $geolocation = new GoogleMaps($curl);
-            $address = $geolocation->geocode($this->addresslineOne . ', ' . $this->cityName)->limit(1);
+            $lookupaddress = utf8_encode($this->addresslineOne . ', ' . $this->cityName);
+            $address = $geolocation->geocode($lookupaddress);
 
             if($address->getLatitude()!='')
             {
