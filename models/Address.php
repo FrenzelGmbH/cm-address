@@ -176,7 +176,7 @@ class Address extends \yii\db\ActiveRecord
         }
         catch(HttpAdapterException $e)
         {
-            echo $e->getMessage();
+            \Yii::error($e->getResponse(),'net\frenzel\cmaddress');
         }
         
         return parent::beforeSave($insert);
