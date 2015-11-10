@@ -7,6 +7,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
 use Ivory\HttpAdapter\CurlHttpAdapter;
+use Ivory\HttpAdapter\HttpAdapterException;
 use Geocoder\Provider\GoogleMaps;
 
 /**
@@ -173,7 +174,7 @@ class Address extends \yii\db\ActiveRecord
                 $this->longitude = $address->getLongitude();
             }
         }
-        catch(Exception $e)
+        catch(HttpAdapterException $e)
         {
             echo $e->getMessage();
         }
