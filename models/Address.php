@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
 use Ivory\HttpAdapter\CurlHttpAdapter;
-use Ivory\HttpAdapter\HttpAdapterException;
+use Ivory\HttpAdapter\Guzzle6HttpAdapter;
 use Geocoder\Provider\GoogleMaps;
 
 /**
@@ -163,9 +163,9 @@ class Address extends \yii\db\ActiveRecord
             $this->isMain = 1;
         }
         try{
-            $curl = new CurlHttpAdapter();
+            $curl = new Guzzle6HttpAdapter();
             $geolocation = new GoogleMaps($curl);
-            $lookupaddress = utf8_encode($this->addresslineOne . ', ' . $this->cityName);
+            $lookupaddress = utf8_encode(str_replace(' ','+',$this->addresslineOne . ', ' . $this->cityName));
             $address = $geolocation->geocode($lookupaddress);
 
             if($address->getLatitude()!='')
