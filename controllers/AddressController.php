@@ -1,10 +1,10 @@
 <?php
 
-namespace frenzelgmbh\cmaddress\controllers;
+namespace net\frenzel\address\controllers;
 
 use Yii;
-use frenzelgmbh\cmaddress\models\Address;
-use frenzelgmbh\cmaddress\models\AddressSearch;
+use net\frenzel\address\models\Address;
+use net\frenzel\address\models\AddressSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
