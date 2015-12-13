@@ -164,7 +164,7 @@ class Address extends \yii\db\ActiveRecord
         }
         try{
             $curl = new CurlHttpAdapter();
-            $geolocation = new GoogleMaps($curl,null,null,true,'AIzaSyC-N0Ri1TejcIrR0k9tZ0rFjQWe6vU2aaY');
+            $geolocation = new GoogleMaps($curl,null,null,true); //,'AIzaSyC-N0Ri1TejcIrR0k9tZ0rFjQWe6vU2aaY' not supported by this adapter
             $lookupaddress = urldecode($this->addresslineOne . ' - ' . $this->cityName); //utf8_encode(str_replace(' ','+',$this->addresslineOne . ' - ' . $this->cityName));
             $address = $geolocation->geocode($lookupaddress);
 
