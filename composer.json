@@ -27,7 +27,7 @@
     "2amigos/yii2-leaflet-extension": "*",
     "2amigos/yii2-leaflet-makimarker-plugin" : "*",
     "guzzle/guzzle": "*",
-    "egeloen/google-map" : "*",
+    "yappabe/google-map" : "1.4.2",
     "rmrevin/yii2-fontawesome": "*"
   },
   "autoload": {
