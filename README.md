@@ -1,7 +1,9 @@
 cm-address
 ==========
 
-Common Address Module (Frenzel GmbH 2015) v.0.2
+common module :: Address Management Module (Frenzel GmbH 2017) v.1.0.4
+Allows you to add addresses to a model by your choice. You can define wheater it's a main address or not.
+@author <philipp@frenzel.net> Philipp Frenzel
 
 Installation
 ============
