@@ -6,8 +6,7 @@ use yii\base\Exception;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use net\frenzel\address\models\scopes\AddressQuery;
-use Ivory\HttpAdapter\HttpAdapterException;
-use Ivory\HttpAdapter\CurlHttpAdapter;
+use Geocoder\Query\GeocodeQuery;
 use Geocoder\Provider\GoogleMaps;
 
 /**
@@ -163,11 +162,12 @@ class Address extends \yii\db\ActiveRecord
             $this->isMain = 1;
         }
         try{
-            $curl = new CurlHttpAdapter();
-            $geolocation = new GoogleMaps($curl,null,null,true); //,'AIzaSyC-N0Ri1TejcIrR0k9tZ0rFjQWe6vU2aaY' not supported by this adapter
-            $lookupaddress = urldecode($this->addresslineOne . ' - ' . $this->cityName); //utf8_encode(str_replace(' ','+',$this->addresslineOne . ' - ' . $this->cityName));
-            $address = $geolocation->geocode($lookupaddress);
-
+            $adapter  = new \Http\Adapter\Guzzle6\Client();
+            $provider = new \Geocoder\Provider\GoogleMaps\GoogleMaps($adapter);
+            $geocoder = new \Geocoder\StatefulGeocoder($provider, 'en');
+            
+            $address = $geocoder->geocodeQuery(GeocodeQuery::create($this->addresslineOne . ' - ' . $this->cityName));
+            
             if($address->getLatitude()!='')
             {
                 $this->latitude = $address->getLatitude();
