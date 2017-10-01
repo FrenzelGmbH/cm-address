@@ -27,15 +27,20 @@ use kartik\widgets\Select2;
         ]
     ]
 ) ?>
-
-        <?= $form->field($model, 'type')->radioButtonGroup($model->TypeArray,[
-                'itemOptions' => ['labelOptions' => ['class' => 'btn btn-warning']]
-        ]);?>
-
-        <?= $form->field($model, 'isMain')->radioButtonGroup([0=>"NOT MAIN", 1=>"MAIN"],[
-                'itemOptions' => ['labelOptions' => ['class' => 'btn btn-info']]
-        ]);?>
         
+        <div class="row">
+            <div class="col-md-6">
+                <?= $form->field($model, 'type')->radioButtonGroup($model->TypeArray,[
+                    'itemOptions' => ['labelOptions' => ['class' => 'btn btn-warning']]
+                ]);?>
+            </div>
+            <div class="col-md-6">
+                <?= $form->field($model, 'isMain')->radioButtonGroup([0=>"NOT MAIN", 1=>"MAIN"],[
+                    'itemOptions' => ['labelOptions' => ['class' => 'btn btn-info']]
+                ]);?>
+            </div>
+        </div>
+
         <?= $form->field($model, 'addresslineOne')->input('text',['class'=>'input-sm']); ?>
         
         <?= $form->field($model, 'regionName')->input('text',['class'=>'input-sm']); ?>
