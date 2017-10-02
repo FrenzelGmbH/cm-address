@@ -22,7 +22,6 @@
   "minimum-stability": "stable",
   "require": {
     "anthonymartin/geo-location" : "~1.0.0",
-    "geocoder-php/geocoder" : "4.*",
     "geocoder-php/google-maps-provider" : "*",
     "guzzlehttp/guzzle": "*",
     "php-http/guzzle6-adapter" : "*",
