@@ -6,23 +6,24 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "country".
+ * This is the model class for table "subdivision".
  *
  * @property integer $id
  * @property string $iso2
- * @property string $iso3
- * @property string $name
+ * @property string $subdivision
+ * @property string $regionName
+ * @property string $regionType
  *
  * @property Address[] $addresses
  */
-class Country extends \yii\db\ActiveRecord
+class Subdivision extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%net_frenzel_country}}';
+        return '{{%net_frenzel_subdivision}}';
     }
 
     /**
@@ -42,8 +43,9 @@ class Country extends \yii\db\ActiveRecord
     {
         return [
             [['iso2'], 'string', 'max' => 2],
-            [['iso3'], 'string', 'max' => 3],
-            [['name'], 'string', 'max' => 100]
+            [['subdivision'], 'string', 'max' => 20],
+            [['regionName'], 'string', 'max' => 100],
+            [['regionType'], 'string', 'max' => 20],
         ];
     }
 
@@ -54,25 +56,18 @@ class Country extends \yii\db\ActiveRecord
     {
         return [
             'id'   => Yii::t('cm-address', 'ID'),
-            'iso2' => Yii::t('cm-address', 'Iso2'),
-            'iso3' => Yii::t('cm-address', 'Iso3'),
-            'name' => Yii::t('cm-address', 'Name'),
+            'iso2' => Yii::t('cm-address', 'Iso2 Country'),
+            'subdivision' => Yii::t('cm-address', 'Region Code'),
+            'regionName' => Yii::t('cm-address', 'Name'),
+            'regionType' => Yii::t('cm-address', 'Type'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAddresses()
+    public function getCountry()
     {
-        return $this->hasMany(Address::className(), ['country_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getSubdivisions()
-    {
-        return $this->hasMany(Subdivision::className(), ['iso2' => 'iso2']);
+        return $this->hasOne(Country::className(), ['iso2' => 'iso2']);
     }
 }
