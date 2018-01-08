@@ -3,8 +3,8 @@
 namespace net\frenzel\address\controllers;
 
 use Yii;
-use net\frenzel\address\models\Address;
-use net\frenzel\address\models\AddressSearch;
+use net\frenzel\address\models\Country;
+use net\frenzel\address\models\CountrySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -34,7 +34,7 @@ class CountryController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new AddressSearch;
+        $searchModel = new CountrySearch;
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
         return $this->render('index', [
@@ -62,7 +62,7 @@ class CountryController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Address;
+        $model = new Country;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -103,6 +103,7 @@ class CountryController extends Controller
         $date = new DateTime('now');
         $model = $this->findModel($id);
         $model->deleted_at = $date->format("U");
+        $model->save();
 
         return $this->redirect(['index']);
     }
@@ -116,7 +117,7 @@ class CountryController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Address::findOne($id)) !== null) {
+        if (($model = Country::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
