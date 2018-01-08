@@ -18,7 +18,7 @@ class Module extends \yii\base\Module
     /**
      * version
      */
-    const VERSION = '0.1.0-dev';
+    const VERSION = '0.1.2-dev';
 
     /** @var string|null */
     public $userIdentityClass = null;
