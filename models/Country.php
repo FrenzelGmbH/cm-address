@@ -12,6 +12,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $iso2
  * @property string $iso3
  * @property string $name
+ * @property integer $is_active
  *
  * @property Address[] $addresses
  */
@@ -43,7 +44,8 @@ class Country extends \yii\db\ActiveRecord
         return [
             [['iso2'], 'string', 'max' => 2],
             [['iso3'], 'string', 'max' => 3],
-            [['name'], 'string', 'max' => 100]
+            [['name'], 'string', 'max' => 100],
+            [['is_avtive'],'integer'],
         ];
     }
 
@@ -57,6 +59,7 @@ class Country extends \yii\db\ActiveRecord
             'iso2' => Yii::t('cm-address', 'Iso2'),
             'iso3' => Yii::t('cm-address', 'Iso3'),
             'name' => Yii::t('cm-address', 'Name'),
+            'is_active' => Yii::t('cm-address', 'Is Active'),
         ];
     }
 
