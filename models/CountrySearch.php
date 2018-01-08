@@ -5,7 +5,7 @@ namespace net\frenzel\address\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frenzelgmbh\cmaddress\models\Country;
+use net\frenzel\address\models\Country;
 
 /**
  * CountrySearch represents the model behind the search form about `app\models\Country`.
