@@ -14,7 +14,7 @@ use \DateTime;
 /**
  * AddressController implements the CRUD actions for Address model.
  */
-class AddressController extends Controller
+class CountryController extends Controller
 {
     public function behaviors()
     {
