@@ -45,7 +45,7 @@ class Country extends \yii\db\ActiveRecord
             [['iso2'], 'string', 'max' => 2],
             [['iso3'], 'string', 'max' => 3],
             [['name'], 'string', 'max' => 100],
-            [['is_avtive'],'integer'],
+            [['is_active'],'integer'],
         ];
     }
 
