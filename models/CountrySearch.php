@@ -8,15 +8,24 @@ use yii\data\ActiveDataProvider;
 use frenzelgmbh\cmaddress\models\Country;
 
 /**
- * AddressSearch represents the model behind the search form about `app\models\Address`.
+ * CountrySearch represents the model behind the search form about `app\models\Country`.
+ * This is the model class for table "country".
+ *
+ * @property integer $id
+ * @property string $iso2
+ * @property string $iso3
+ * @property string $name
+ * @property integer $is_active
+ *
+ * @property Address[] $addresses
  */
-class AddressSearch extends Country
+class CountrySearch extends Country
 {
     public function rules()
     {
         return [
-            [['id', 'user_id', 'mod_id', 'system_upate', 'created_at', 'updated_at', 'country_id'], 'integer'],
-            [['cityName', 'zipCode', 'postBox', 'addresslineOne', 'addresslineTwo', 'regionName', 'mod_table', 'system_key', 'system_name'], 'safe'],
+            [['id', 'is_active'], 'integer'],
+            [['iso2', 'iso3', 'name'], 'safe'],
         ];
     }
 
