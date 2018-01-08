@@ -103,6 +103,7 @@ class AddressController extends Controller
         $date = new DateTime('now');
         $model = $this->findModel($id);
         $model->deleted_at = $date->format("U");
+        $model->save();
 
         return $this->redirect(['index']);
     }
