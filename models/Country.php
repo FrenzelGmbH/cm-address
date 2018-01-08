@@ -4,6 +4,7 @@ namespace net\frenzel\address\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use net\frenzel\address\models\scopes\CountryQuery;
 
 /**
  * This is the model class for table "country".
@@ -24,6 +25,15 @@ class Country extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return '{{%net_frenzel_country}}';
+    }
+  
+    /**
+     * @inheritdoc
+     * @return CountryQuery
+     */
+    public static function find()
+    {
+        return new CountryQuery(get_called_class());
     }
 
     /**
