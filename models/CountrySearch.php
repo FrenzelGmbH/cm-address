@@ -42,9 +42,9 @@ class CountrySearch extends Country
      * @param  integer $id     [description]
      * @return [type]         [description]
      */
-    public function search($params,$entity=NULL,$entity_id=NULL)
+    public function search($params)
     {
-        $query = Country::find()->active()->related($entity, $entity_id);
+        $query = Country::find()->active();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,13 +56,15 @@ class CountrySearch extends Country
 
         $query->andFilterWhere([
             'id' => $this->id,
+          	'is_active' => $this->is_active,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'country_id' => $this->country_id,
         ]);
 
-        $query->andFilterWhere(['like', 'cityName', $this->cityName])
-            ->andFilterWhere(['like', 'zipCode', $this->zipCode]);
+        $query->andFilterWhere(['like', 'iso2', $this->iso2])
+            ->andFilterWhere(['like', 'iso3', $this->iso3])
+          	->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }
